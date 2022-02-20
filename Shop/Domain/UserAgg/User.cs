@@ -30,6 +30,8 @@ namespace Domain.UserAgg
             Password = password;
             Avatar = avatar;
             Gender = gender;
+            Roles = new List<UserRole>();
+            Addresses = new List<UserAddress>();
         }
 
         public void Edit(string firstName, string lastName, string email, string phoneNumber, string avatar,
@@ -81,6 +83,7 @@ namespace Domain.UserAgg
         #endregion
 
         #region Roles
+
         public void SetRoles(List<UserRole> roles)
         {
             Roles?.Clear();
@@ -93,7 +96,7 @@ namespace Domain.UserAgg
         #endregion
 
         #region Guards
-     
+
         private async void GuardByPhoneNumber(string phoneNumber, string password, IUserDomainService userService)
         {
             NullOrEmptyDomainDataException.CheckString(phoneNumber, nameof(phoneNumber));
