@@ -26,11 +26,16 @@ namespace Domain.RoleAgg
             Description = description;
         }
 
-        public void AddPermission(List<RolePermission> permissions) => Permissions.AddRange(permissions);
-        
+        public void AddPermission(List<RolePermission> permissions)
+        {
+            permissions.ForEach(p => p.RoleId = Id);
+            Permissions.AddRange(permissions);
+        }
+
         public void EditPermission(List<RolePermission> permissions)
         {
             Permissions.Clear();
+            permissions.ForEach(p => p.RoleId = Id);
             Permissions.AddRange(permissions);
         }
 
