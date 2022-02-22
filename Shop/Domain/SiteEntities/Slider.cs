@@ -1,4 +1,5 @@
 ﻿using Common.Domain;
+using Common.Domain.Exceptions;
 using Framework.Domain.ValueObjects;
 
 namespace Domain.SiteEntities
@@ -9,17 +10,23 @@ namespace Domain.SiteEntities
         public string Link { get; private set; }
         public string ImageName { get; private set; }
         public SeoImage SeoImage { get; private set; }
+        public bool IsActive { get; private set; }
 
         public Slider(string title, string link, string imageName, SeoImage seoImage)
         {
+            Guard(title, link);
+
             Title = title;
             Link = link;
             ImageName = imageName;
             SeoImage = seoImage;
+            IsActive = false;
         }
 
         public void Edit(string title, string link, string imageName, SeoImage seoImage)
         {
+            Guard(title, link);
+
             Title = title;
             Link = link;
 
@@ -27,6 +34,14 @@ namespace Domain.SiteEntities
                 ImageName = imageName;
 
             SeoImage = seoImage;
+        }
+
+        public void ChangeActivation(bool isActive) => IsActive = isActive;
+
+        public void Guard(string title, string link)
+        {
+            NullOrEmptyDomainDataException.CheckString(title, nameof(title));
+            NullOrEmptyDomainDataException.CheckString(link, nameof(link));
         }
     }
 }
