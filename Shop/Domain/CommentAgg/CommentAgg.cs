@@ -4,14 +4,14 @@ using Domain.CommentAgg.Enums;
 
 namespace Domain.CommentAgg
 {
-    public class CommentAgg : AggregateRoot
+    public class Comment : AggregateRoot
     {
         public long UserId { get; private set; }
         public long ProductId { get; private set; }
         public string Content { get; private set; }
         public CommentStatus Status { get; private set; }
 
-        public CommentAgg(long userId, long productId, string content, CommentStatus status)
+        public Comment(long userId, long productId, string content, CommentStatus status)
         {
             Guard(content);
 
