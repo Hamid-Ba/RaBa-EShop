@@ -1,6 +1,6 @@
-﻿using Common.Domain;
-using Common.Domain.Exceptions;
+﻿using Framework.Domain;
 using Framework.Domain.Enums;
+using Framework.Domain.Exceptions;
 using Framework.Domain.ValueObjects;
 
 namespace Domain.SiteEntities

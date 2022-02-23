@@ -1,7 +1,7 @@
-﻿using Common.Domain;
-using Common.Domain.Exceptions;
-using Domain.UserAgg.Enums;
+﻿using Domain.UserAgg.Enums;
 using Domain.UserAgg.Services;
+using Framework.Domain;
+using Framework.Domain.Exceptions;
 
 namespace Domain.UserAgg
 {

@@ -1,6 +1,6 @@
-﻿using Common.Domain;
-using Common.Domain.Exceptions;
-using Domain.CategoryAgg.Services;
+﻿using Domain.CategoryAgg.Services;
+using Framework.Domain;
+using Framework.Domain.Exceptions;
 using Framework.Domain.Utils;
 using Framework.Domain.ValueObjects;
 

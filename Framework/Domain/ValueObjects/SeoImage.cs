@@ -1,6 +1,4 @@
-﻿using Common.Domain;
-
-namespace Framework.Domain.ValueObjects
+﻿namespace Framework.Domain.ValueObjects
 {
     public class SeoImage : ValueObject
     {

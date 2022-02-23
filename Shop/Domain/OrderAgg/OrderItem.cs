@@ -1,6 +1,6 @@
-﻿using Common.Domain;
-using Common.Domain.Exceptions;
-using Domain.OrderAgg.ValueObjects;
+﻿using Domain.OrderAgg.ValueObjects;
+using Framework.Domain;
+using Framework.Domain.Exceptions;
 
 namespace Domain.OrderAgg
 {

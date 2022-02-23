@@ -1,4 +1,4 @@
-﻿namespace Common.Domain
+﻿namespace Framework.Domain
 {
     public class BaseEntity
     {

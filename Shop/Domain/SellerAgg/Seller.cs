@@ -1,6 +1,6 @@
-﻿using Common.Domain;
-using Common.Domain.Exceptions;
-using Domain.SellerAgg.Enums;
+﻿using Domain.SellerAgg.Enums;
+using Framework.Domain;
+using Framework.Domain.Exceptions;
 
 namespace Domain.SellerAgg
 {

@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Common.Domain
+namespace Framework.Domain
 {
     public class IranianNationalIdChecker
     {

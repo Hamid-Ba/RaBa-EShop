@@ -1,6 +1,6 @@
-﻿using Common.Domain;
-using Common.Domain.Exceptions;
-using Domain.CommentAgg.Enums;
+﻿using Domain.CommentAgg.Enums;
+using Framework.Domain;
+using Framework.Domain.Exceptions;
 
 namespace Domain.CommentAgg
 {

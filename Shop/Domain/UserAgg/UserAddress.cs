@@ -1,5 +1,5 @@
-﻿using Common.Domain;
-using Common.Domain.Exceptions;
+﻿using Framework.Domain;
+using Framework.Domain.Exceptions;
 
 namespace Domain.UserAgg
 {

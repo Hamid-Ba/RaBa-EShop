@@ -1,6 +1,6 @@
-﻿using Common.Domain;
-using Common.Domain.Exceptions;
-using Domain.RoleAgg.Services;
+﻿using Domain.RoleAgg.Services;
+using Framework.Domain;
+using Framework.Domain.Exceptions;
 
 namespace Domain.RoleAgg
 {
