@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CategoryAgg\AddChild\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Framework\Framework.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
