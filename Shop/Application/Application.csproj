@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CategoryAgg\Edit\" />
     <Folder Include="CategoryAgg\AddChild\" />
   </ItemGroup>
 
