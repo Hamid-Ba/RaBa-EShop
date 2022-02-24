@@ -36,10 +36,21 @@ namespace Domain.OrderAgg
 
         #region Items
 
-        public void AddItem(OrderItem item) => Items.Add(item);
+        public void AddItem(OrderItem item)
+        {
+            Guard();
+
+            var currentItem = Items.FirstOrDefault(i => i.Id == item.Id);
+
+            if (currentItem is null) Items.Add(item);
+
+            currentItem.ChangeCount(item.Count);
+        }
 
         public void RemoveItem(long itemId)
         {
+            Guard();
+
             var item = Items.FirstOrDefault(i => i.Id == itemId);
 
             if (item != null) Items.Remove(item);
@@ -47,6 +58,8 @@ namespace Domain.OrderAgg
 
         public void ChangeCount(long itemId, int count)
         {
+            Guard();
+
             var item = Items.FirstOrDefault(i => i.Id == itemId);
 
             if (item != null) item.ChangeCount(count);
@@ -54,6 +67,8 @@ namespace Domain.OrderAgg
 
         public void IncreaseCount(long itemId, int count)
         {
+            Guard();
+
             var item = Items.FirstOrDefault(i => i.Id == itemId);
 
             if (item != null) item.IncreaseCount(count);
@@ -61,6 +76,8 @@ namespace Domain.OrderAgg
 
         public void DecreaseCount(long itemId, int count)
         {
+            Guard();
+
             var item = Items.FirstOrDefault(i => i.Id == itemId);
 
             if (item != null) item.DecreaseCount(count);
@@ -70,14 +87,15 @@ namespace Domain.OrderAgg
 
         #region Status
 
-        public void ChangeStatus(OrderStatus status)
-        {
-            ChangeGuard();
-            Status = status;
-        }
+        public void ChangeStatus(OrderStatus status) => Status = status;
 
         #endregion
 
-        private void ChangeGuard() { if (Status == OrderStatus.Pending) throw new InvalidDomainDataException("وضعیت سفارش باز هست"); }
+        public void Checkout(OrderAddress address)
+        {
+            Guard();
+            Address = address;
+        }
+        private void Guard() { if (Status != OrderStatus.Pending) throw new InvalidDomainDataException("این سفارش غیرقابل تغییر است"); }
     }
 }
