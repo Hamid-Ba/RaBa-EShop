@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace Application.OrderAgg.AddItem
+namespace Application.OrderAgg.ChangeCount
 {
-    public class AddItemCommandValidator : AbstractValidator<AddItemCommand>
+    public class ChangeCountCommandValidator : AbstractValidator<ChangeCountCommand>
     {
-        public AddItemCommandValidator()
+        public ChangeCountCommandValidator()
         {
             RuleFor(r => r.Count)
                 .GreaterThanOrEqualTo(1)
