@@ -25,6 +25,7 @@ namespace Application.OrderAgg.AddItem
             if (inventory.Count < request.Count) throw new InvalidOperationException("تعداد محصول انتخاب شده بیشتر از موجودی انبار هست");
 
             openOrder.AddItem(new OrderItem(openOrder.Id, request.InventoryId, request.Count));
+            await _orderRepository.SaveChangesAsync();
 
             return OperationResult.Success();
         }
