@@ -96,6 +96,7 @@ namespace Domain.OrderAgg
             Guard();
             Address = address;
         }
+
         private void Guard() { if (Status != OrderStatus.Pending) throw new InvalidDomainDataException("این سفارش غیرقابل تغییر است"); }
     }
 }
