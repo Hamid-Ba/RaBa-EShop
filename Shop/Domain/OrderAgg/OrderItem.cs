@@ -7,10 +7,18 @@ namespace Domain.OrderAgg
     public class OrderItem : BaseEntity
     {
         public long OrderId { get; internal set; }
+        public long InventoryId { get; private set; }
         public int Count { get; private set; }
         public double TotalPrice { get; private set; }
         public double PayAmount { get; private set; }
         public OrderDiscount? Discount { get; private set; }
+
+        public OrderItem(long orderId, long inventoryId, int count)
+        {
+            OrderId = orderId;
+            InventoryId = inventoryId;
+            Count = count;
+        }
 
         public void ChangeCount(int count)
         {
