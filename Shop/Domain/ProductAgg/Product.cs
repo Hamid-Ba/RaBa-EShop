@@ -67,9 +67,9 @@ namespace Domain.ProductAgg
             Images.Add(image);
         }
 
-        public void EditImage(ProductImage image)
+        public void EditImage(long imageId,ProductImage image)
         {
-            DeleteImage(image.Id);
+            DeleteImage(imageId);
             AddImage(image);
         }
 
