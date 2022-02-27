@@ -17,9 +17,11 @@ namespace Application.ProductAgg.EditImage
             if (product is null) return OperationResult.NotFound();
 
             var imageName = Uploader.ImageUploader(request.ImageFile, DirectoryImages.ProductGallery, request.ImageName);
-            var image = new ProductImage(imageName,request.SeoImage,request.Sequence);
+            var image = new ProductImage(imageName, request.SeoImage, request.Sequence);
 
-            product.EditImage(request.ImageId,image);
+            product.EditImage(request.ImageId, image);
+            await _productRepository.SaveChangesAsync();
+
             return OperationResult.Success();
         }
     }
