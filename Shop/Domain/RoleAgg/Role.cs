@@ -35,8 +35,7 @@ namespace Domain.RoleAgg
         public void EditPermission(List<RolePermission> permissions)
         {
             Permissions.Clear();
-            permissions.ForEach(p => p.RoleId = Id);
-            Permissions.AddRange(permissions);
+            AddPermission(permissions);
         }
 
         public async void Guard(string title,IRoleDomainService roleService)
