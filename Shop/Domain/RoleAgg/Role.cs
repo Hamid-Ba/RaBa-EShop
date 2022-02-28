@@ -11,12 +11,12 @@ namespace Domain.RoleAgg
 
         public List<RolePermission> Permissions { get; private set; }
 
-        public Role(string title, string description,IRoleDomainService roleService)
+        public Role(string title, string description,List<RolePermission> permissions,IRoleDomainService roleService)
         {
             Guard(title, roleService);
             Title = title;
             Description = description;
-            Permissions = new List<RolePermission>();
+            Permissions = permissions;
         }
 
         public void Edit(string title, string description, IRoleDomainService roleService)
