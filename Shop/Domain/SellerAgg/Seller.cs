@@ -60,12 +60,12 @@ namespace Domain.SellerAgg
             else throw new InvalidDomainDataException("این محصول قبلا ثبت شده است");
         }
 
-        public void EditInventory(Inventory inventory)
+        public void EditInventory(long inventoryId,long productId,int count,double price)
         {
-            DeleteInventory(inventory.Id);
+            var inventory = Inventories.FirstOrDefault(i => i.Id == inventoryId);
+            if (inventory is null) throw new InvalidDomainDataException("همچین محصولی در انبار شما وجود ندارد");
 
-            inventory.SellerId = Id;
-            Inventories.Add(inventory);
+            inventory.Edit(productId, count, price);
         }
 
         public void DeleteInventory(long inventoryId)
