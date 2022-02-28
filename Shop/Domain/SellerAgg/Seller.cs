@@ -1,4 +1,5 @@
 ﻿using Domain.SellerAgg.Enums;
+using Domain.SellerAgg.Services;
 using Framework.Domain;
 using Framework.Domain.Exceptions;
 
@@ -14,10 +15,12 @@ namespace Domain.SellerAgg
 
         public List<Inventory> Inventories { get; private set; }
 
-        public Seller(long userId, string shopName, string nationalCode)
+        public Seller(long userId, string shopName, string nationalCode, ISellerDomainService sellerService)
         {
-            Guard(shopName, nationalCode);
+            Guard(shopName, nationalCode, sellerService);
 
+            if (sellerService.IsSellerExistWithThis(userId))
+                throw new InvalidDomainDataException("فروشگاه این شخص قبلا ثبت شده است");
             UserId = userId;
             ShopName = shopName;
             NationalCode = nationalCode;
@@ -27,9 +30,9 @@ namespace Domain.SellerAgg
             Inventories = new List<Inventory>();
         }
 
-        public void Edit(string shopName, string nationalCode)
+        public void Edit(string shopName, string nationalCode, ISellerDomainService sellerService)
         {
-            Guard(shopName, nationalCode);
+            Guard(shopName, nationalCode, sellerService);
 
             ShopName = shopName;
             NationalCode = nationalCode;
@@ -37,7 +40,7 @@ namespace Domain.SellerAgg
             StatusDescriber = "مشخصات تغییر یافت";
         }
 
-        public void ChangeStatus(SellerStatus sellerStatus,string description)
+        public void ChangeStatus(SellerStatus sellerStatus, string description)
         {
             Status = sellerStatus;
             StatusDescriber = description;
@@ -94,12 +97,16 @@ namespace Domain.SellerAgg
 
         #endregion
 
-        public void Guard(string shopName, string nationalCode)
+        public void Guard(string shopName, string nationalCode, ISellerDomainService sellerService)
         {
             NullOrEmptyDomainDataException.CheckString(shopName, nameof(shopName));
             NullOrEmptyDomainDataException.CheckString(nationalCode, nameof(nationalCode));
 
             if (!IranianNationalIdChecker.IsValid(nationalCode)) throw new InvalidDomainDataException("کد ملی نامعتبر هست");
+
+            if (NationalCode != nationalCode)
+                if (sellerService.IsSellerExistWithThis(nationalCode))
+                    throw new InvalidDomainDataException("این کد ملی ثبت شده است");
         }
     }
 }
