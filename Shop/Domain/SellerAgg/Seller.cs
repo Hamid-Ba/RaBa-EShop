@@ -68,14 +68,14 @@ namespace Domain.SellerAgg
             inventory.Edit(productId, count, price);
         }
 
-        public void DeleteInventory(long inventoryId)
-        {
-            var oldInventory = Inventories.FirstOrDefault(i => i.Id == inventoryId);
+        //public void DeleteInventory(long inventoryId)
+        //{
+        //    var oldInventory = Inventories.FirstOrDefault(i => i.Id == inventoryId);
 
-            if (oldInventory is null) throw new InvalidDomainDataException("همچین محصولی وجود ندارد");
+        //    if (oldInventory is null) throw new InvalidDomainDataException("همچین محصولی وجود ندارد");
 
-            Inventories.Remove(oldInventory);
-        }
+        //    Inventories.Remove(oldInventory);
+        //}
 
         public void ChangeInventoryCount(long inventoryId, int count)
         {
