@@ -6,5 +6,6 @@
         public const string ProductGallery = "ProductGallery";
 
         public const string Banners = "Banners";
+        public const string Sliders = "Sliders";
     }
 }
