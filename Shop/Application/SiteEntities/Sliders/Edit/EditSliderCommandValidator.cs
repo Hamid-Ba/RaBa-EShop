@@ -2,11 +2,11 @@
 using Framework.Application.Validation;
 using Framework.Application.Validation.FluentValidations;
 
-namespace Application.SiteEntities.Sliders.Create
+namespace Application.SiteEntities.Sliders.Edit
 {
-    public class CreateSliderCommandValidator : AbstractValidator<CreateSliderCommand>
+    public class EditSliderCommandValidator : AbstractValidator<EditSliderCommand>
     {
-        public CreateSliderCommandValidator()
+        public EditSliderCommandValidator()
         {
             RuleFor(r => r.Title)
                 .NotNull().NotEmpty()
@@ -16,7 +16,7 @@ namespace Application.SiteEntities.Sliders.Create
                 .NotNull().NotEmpty()
                 .WithMessage(ValidationMessages.required("لینک"));
 
-            RuleFor(r => r.ImageName)
+            RuleFor(r => r.ImageFile)
                 .NotNull()
                 .WithMessage(ValidationMessages.required("تصویر"))
                 .JustImageFile();
