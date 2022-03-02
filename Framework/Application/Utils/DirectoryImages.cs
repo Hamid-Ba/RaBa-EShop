@@ -4,5 +4,7 @@
     {
         public const string Product = "Product";
         public const string ProductGallery = "ProductGallery";
+
+        public const string Banners = "Banners";
     }
 }
