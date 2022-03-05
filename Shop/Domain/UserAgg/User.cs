@@ -19,7 +19,7 @@ namespace Domain.UserAgg
         public List<UserAddress> Addresses { get; private set; }
 
         public User(string firstName, string lastName, string email, string phoneNumber, string password, string avatar,
-            Gender gender, IUserDomainService userService)
+            Gender gender,List<UserRole> roles, IUserDomainService userService)
         {
             GuardByPhoneNumber(phoneNumber, password, userService);
 
@@ -30,11 +30,11 @@ namespace Domain.UserAgg
             Password = password;
             Avatar = avatar;
             Gender = gender;
-            Roles = new List<UserRole>();
+            Roles = roles;
             Addresses = new List<UserAddress>();
         }
 
-        public void Edit(string firstName, string lastName, string email, string phoneNumber, string avatar,
+        public void Edit(string firstName, string lastName, string email, string phoneNumber, string password, string avatar,
             Gender gender, IUserDomainService userService)
         {
             GuardByPhoneNumber(phoneNumber, "ignore", userService);
@@ -44,13 +44,16 @@ namespace Domain.UserAgg
             Email = email;
             PhoneNumber = phoneNumber;
 
+            if (!string.IsNullOrWhiteSpace(password))
+                Password = password;
+
             if (!string.IsNullOrWhiteSpace(avatar))
                 Avatar = avatar;
 
             Gender = gender;
         }
 
-        public static User Register(string phoneNumber, string password, IUserDomainService userService) => new User("", "", "", phoneNumber, password, "", Gender.None, userService);
+        public static User Register(string phoneNumber, string password, IUserDomainService userService) => new User("", "", "", phoneNumber, password, "", Gender.None,new List<UserRole>(), userService);
 
 
         #region Address
@@ -61,14 +64,14 @@ namespace Domain.UserAgg
             Addresses.Add(address);
         }
 
-        public void EditAddress(UserAddress address)
+        public void EditAddress(long addressId,UserAddress address)
         {
-            var oldAddress = Addresses.FirstOrDefault(a => a.Id == address.Id);
+            var oldAddress = Addresses.FirstOrDefault(a => a.Id == addressId);
 
             if (oldAddress is null) throw new InvalidDomainDataException("همچین آدرسی وجود ندارد");
 
-            Addresses.Remove(oldAddress);
-            AddAddress(address);
+            oldAddress.Edit(address.FullName, address.PhoneNumber, address.Province, address.City, address.Address,
+                address.PostalCode, address.NationalCode);
         }
 
         public void DeleteAddress(long addressId)
