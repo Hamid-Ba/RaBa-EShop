@@ -34,7 +34,7 @@ namespace Domain.UserAgg
             Addresses = new List<UserAddress>();
         }
 
-        public void Edit(string firstName, string lastName, string email, string phoneNumber, string password, string avatar,
+        public void Edit(string firstName, string lastName, string email, string phoneNumber, string avatar,
             Gender gender, IUserDomainService userService)
         {
             GuardByPhoneNumber(phoneNumber, "ignore", userService);
@@ -44,8 +44,7 @@ namespace Domain.UserAgg
             Email = email;
             PhoneNumber = phoneNumber;
 
-            if (!string.IsNullOrWhiteSpace(password))
-                Password = password;
+            
 
             if (!string.IsNullOrWhiteSpace(avatar))
                 Avatar = avatar;
@@ -54,6 +53,12 @@ namespace Domain.UserAgg
         }
 
         public static User Register(string phoneNumber, string password, IUserDomainService userService) => new User("", "", "", phoneNumber, password, "", Gender.None, userService);
+
+        public void ChangePassword(string newPassword)
+        {
+            if (!string.IsNullOrWhiteSpace(newPassword))
+                Password = newPassword;
+        }
 
 
         #region Address
