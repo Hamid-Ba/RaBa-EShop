@@ -7,5 +7,7 @@
 
         public const string Banners = "Banners";
         public const string Sliders = "Sliders";
+
+        public const string Avatars = "Avatars";
     }
 }

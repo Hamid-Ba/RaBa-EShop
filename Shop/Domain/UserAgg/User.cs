@@ -19,7 +19,7 @@ namespace Domain.UserAgg
         public List<UserAddress> Addresses { get; private set; }
 
         public User(string firstName, string lastName, string email, string phoneNumber, string password, string avatar,
-            Gender gender,List<UserRole> roles, IUserDomainService userService)
+            Gender gender, IUserDomainService userService)
         {
             GuardByPhoneNumber(phoneNumber, password, userService);
 
@@ -30,7 +30,7 @@ namespace Domain.UserAgg
             Password = password;
             Avatar = avatar;
             Gender = gender;
-            Roles = roles;
+            Roles = new List<UserRole>();
             Addresses = new List<UserAddress>();
         }
 
@@ -53,7 +53,7 @@ namespace Domain.UserAgg
             Gender = gender;
         }
 
-        public static User Register(string phoneNumber, string password, IUserDomainService userService) => new User("", "", "", phoneNumber, password, "", Gender.None,new List<UserRole>(), userService);
+        public static User Register(string phoneNumber, string password, IUserDomainService userService) => new User("", "", "", phoneNumber, password, "", Gender.None, userService);
 
 
         #region Address
