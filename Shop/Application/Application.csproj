@@ -13,8 +13,10 @@
 
   <ItemGroup>
     <None Remove="UserAgg\AddAddress\" />
+    <None Remove="UserAgg\EditAddress\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserAgg\AddAddress\" />
+    <Folder Include="UserAgg\EditAddress\" />
   </ItemGroup>
 </Project>
