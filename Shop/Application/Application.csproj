@@ -11,4 +11,10 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="UserAgg\AddAddress\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserAgg\AddAddress\" />
+  </ItemGroup>
 </Project>
