@@ -16,6 +16,7 @@ namespace Domain.UserAgg
         public Gender Gender { get; private set; }
 
         public List<UserRole> Roles { get; private set; }
+        public List<UserWallet> Wallets { get; private set; }
         public List<UserAddress> Addresses { get; private set; }
 
         public User(string firstName, string lastName, string email, string phoneNumber, string password, string avatar,
@@ -44,7 +45,7 @@ namespace Domain.UserAgg
             Email = email;
             PhoneNumber = phoneNumber;
 
-            
+
 
             if (!string.IsNullOrWhiteSpace(avatar))
                 Avatar = avatar;
@@ -69,7 +70,7 @@ namespace Domain.UserAgg
             Addresses.Add(address);
         }
 
-        public void EditAddress(long addressId,UserAddress address)
+        public void EditAddress(long addressId, UserAddress address)
         {
             var oldAddress = Addresses.FirstOrDefault(a => a.Id == addressId);
 
@@ -99,6 +100,19 @@ namespace Domain.UserAgg
             roles.ForEach(r => r.UserId = Id);
 
             Roles?.AddRange(roles);
+        }
+
+        #endregion
+
+        #region Wallet
+
+        public void ChargeWallet(UserWallet wallet)
+        {
+            if (wallet.Amount <= 0)
+                throw new InvalidDomainDataException("مبلغ را درست وارد کنید");
+
+            wallet.UserId = Id;
+            Wallets.Add(wallet);
         }
 
         #endregion
