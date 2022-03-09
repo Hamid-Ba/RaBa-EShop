@@ -15,9 +15,8 @@ namespace Domain.UserAgg
 
         public User User { get; set; }
 
-        public UserWallet(long userId, double amount)
+        public UserWallet(double amount)
         {
-            UserId = userId;
             Amount = amount;
             IsPayed = false;
         }

@@ -15,10 +15,12 @@
     <None Remove="UserAgg\AddAddress\" />
     <None Remove="UserAgg\EditAddress\" />
     <None Remove="UserAgg\DeleteAddress\" />
+    <None Remove="UserAgg\ChargeWallet\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserAgg\AddAddress\" />
     <Folder Include="UserAgg\EditAddress\" />
     <Folder Include="UserAgg\DeleteAddress\" />
+    <Folder Include="UserAgg\ChargeWallet\" />
   </ItemGroup>
 </Project>
