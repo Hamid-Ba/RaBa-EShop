@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Shop\Domain\Domai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Shop\Application\Application.csproj", "{92C71DF7-13E5-4CDD-BB0C-E46ABCDD0DB1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.EfCore", "Shop\Infrastructure.EfCore\Infrastructure.EfCore.csproj", "{69DB2528-35AB-4213-886D-CD700083DBD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Shop\Infrastructure.EfCore\Infrastructure.csproj", "{69DB2528-35AB-4213-886D-CD700083DBD5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Configuration", "Shop\Infrastructure.Configuration\Infrastructure.Configuration.csproj", "{1634FAC3-C1A5-403A-A715-BFD315426E44}"
 EndProject
