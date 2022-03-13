@@ -13,6 +13,11 @@
     <None Remove="Persistent.EfCore\CategoryAgg\" />
     <None Remove="Persistent.EfCore\CommentAgg\" />
     <None Remove="Persistent.EfCore\OrderAgg\" />
+    <None Remove="Persistent.EfCore\ProductAgg\" />
+    <None Remove="Persistent.EfCore\RoleAgg\" />
+    <None Remove="Persistent.EfCore\SellerAgg\" />
+    <None Remove="Persistent.EfCore\SiteEntities\" />
+    <None Remove="Persistent.EfCore\UserAgg\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
@@ -26,6 +31,11 @@
     <Folder Include="Persistent.EfCore\CategoryAgg\" />
     <Folder Include="Persistent.EfCore\CommentAgg\" />
     <Folder Include="Persistent.EfCore\OrderAgg\" />
+    <Folder Include="Persistent.EfCore\ProductAgg\" />
+    <Folder Include="Persistent.EfCore\RoleAgg\" />
+    <Folder Include="Persistent.EfCore\SellerAgg\" />
+    <Folder Include="Persistent.EfCore\SiteEntities\" />
+    <Folder Include="Persistent.EfCore\UserAgg\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />

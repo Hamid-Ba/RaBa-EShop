@@ -9,7 +9,6 @@ namespace Infrastructure.Persistent.EfCore.OrderAgg
         public void Configure(EntityTypeBuilder<Order> builder)
         {
             builder.ToTable("Orders", "order");
-
             builder.HasKey(k => k.Id);
 
             builder.OwnsOne(o => o.Method, config =>
@@ -20,7 +19,6 @@ namespace Infrastructure.Persistent.EfCore.OrderAgg
             builder.OwnsOne(o => o.Address, config =>
            {
                config.ToTable("Addresses", "order");
-
                config.HasKey(k => k.Id);
 
                config.Property(p => p.FullName).HasMaxLength(125).IsRequired();
@@ -35,7 +33,6 @@ namespace Infrastructure.Persistent.EfCore.OrderAgg
             builder.OwnsMany(o => o.Items, config =>
            {
                config.ToTable("Items", "order");
-
                config.HasKey(k => k.Id);
 
                config.OwnsOne(d => d.Discount);
