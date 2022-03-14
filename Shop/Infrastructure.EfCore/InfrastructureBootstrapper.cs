@@ -6,6 +6,7 @@ using Domain.RoleAgg.Repository;
 using Domain.SellerAgg.Repository;
 using Domain.SiteEntities.Repository;
 using Domain.UserAgg.Repository;
+using Infrastructure.Persistent.Dapper;
 using Infrastructure.Persistent.EfCore.CategoryAgg;
 using Infrastructure.Persistent.EfCore.CommentAgg;
 using Infrastructure.Persistent.EfCore.OrderAgg;
@@ -22,6 +23,7 @@ namespace Infrastructure
     {
         public void Congiure(IServiceCollection service, string connectionString)
         {
+            //Configure Repositories
             service.AddTransient<ICategoryRepository, CategoryRepository>();
             service.AddTransient<ICommentRepository, CommentRepository>();
             service.AddTransient<IOrderRepository, OrderRepository>();
@@ -31,7 +33,9 @@ namespace Infrastructure
             service.AddTransient<ISliderRepository, SliderRepository>();
             service.AddTransient<IBannerRepository, BannerRepository>();
             service.AddTransient<IUserRepository, UserRepository>();
+
+            //Configure Dapper Context
+            service.AddTransient(_ => new DapperContext(connectionString));
         }
     }
-
 }

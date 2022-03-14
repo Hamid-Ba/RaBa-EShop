@@ -19,6 +19,8 @@
     <None Remove="Persistent.EfCore\SiteEntities\" />
     <None Remove="Persistent.EfCore\UserAgg\" />
     <None Remove="Persistent.EfCore\SiteEntities\Repositories\" />
+    <None Remove="Dapper" />
+    <None Remove="Persistent.Dapper\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
@@ -26,6 +28,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Dapper" Version="2.0.123" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Persistent.EfCore\" />
@@ -38,6 +41,7 @@
     <Folder Include="Persistent.EfCore\SiteEntities\" />
     <Folder Include="Persistent.EfCore\UserAgg\" />
     <Folder Include="Persistent.EfCore\SiteEntities\Repositories\" />
+    <Folder Include="Persistent.Dapper\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
