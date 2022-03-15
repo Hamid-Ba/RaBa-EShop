@@ -17,5 +17,20 @@ namespace Query.CommentAgg
 				UserId = c.UserId
 			}).ToList();
         }
+
+		public static CommentDto Map(this Comment? comment)
+        {
+			if (comment is null) return null;
+
+			return new CommentDto
+			{
+				Id = comment.Id,
+				Content = comment.Content,
+				CreationDate = comment.CreationDate,
+				ProductId = comment.ProductId,
+				Status = comment.Status,
+				UserId = comment.UserId
+			};
+		}
 	}
 }
