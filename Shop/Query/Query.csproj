@@ -19,6 +19,8 @@
     <None Remove="CategoryAgg\GetChildrenById\" />
     <None Remove="CategoryAgg\GetAll\" />
     <None Remove="CategoryAgg\DTOs\" />
+    <None Remove="CommentAgg\DTOs\" />
+    <None Remove="CommentAgg\GetAll\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -33,6 +35,8 @@
     <Folder Include="CategoryAgg\GetChildrenById\" />
     <Folder Include="CategoryAgg\GetAll\" />
     <Folder Include="CategoryAgg\DTOs\" />
+    <Folder Include="CommentAgg\DTOs\" />
+    <Folder Include="CommentAgg\GetAll\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.EfCore\Infrastructure.csproj" />
