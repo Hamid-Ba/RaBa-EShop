@@ -6,4 +6,24 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="CategoryAgg\" />
+    <None Remove="CommentAgg\" />
+    <None Remove="OrderAgg\" />
+    <None Remove="ProductAgg\" />
+    <None Remove="RoleAgg\" />
+    <None Remove="SellerAgg\" />
+    <None Remove="SiteEntities\" />
+    <None Remove="UserAgg\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CategoryAgg\" />
+    <Folder Include="CommentAgg\" />
+    <Folder Include="OrderAgg\" />
+    <Folder Include="ProductAgg\" />
+    <Folder Include="RoleAgg\" />
+    <Folder Include="SellerAgg\" />
+    <Folder Include="SiteEntities\" />
+    <Folder Include="UserAgg\" />
+  </ItemGroup>
 </Project>

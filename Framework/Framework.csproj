@@ -19,8 +19,10 @@
 	<ItemGroup>
 	  <None Remove="Infrastructure\" />
 	  <None Remove="Microsoft.EntityFrameworkCore" />
+	  <None Remove="Query\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Infrastructure\" />
+	  <Folder Include="Query\" />
 	</ItemGroup>
 </Project>
