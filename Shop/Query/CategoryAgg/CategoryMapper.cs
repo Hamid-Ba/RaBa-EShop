@@ -5,7 +5,23 @@ namespace Query.CategoryAgg
 {
     public static class CategoryMapper
 	{
-		public static List<CategoryDto> MapAll(this List<Category> categories)
+		public static CategoryDto Map(this Category? category)
+        {
+			if(category is null) return null;
+
+			return new CategoryDto
+			{
+				Id = category.Id,
+				ParentId = category.ParentId,
+				Title = category.Title,
+				Slug = category.Slug,
+				SeoData = category.SeoData,
+				CreationDate = category.CreationDate,
+				Children = category.Children.Map()
+			};
+        }
+
+		public static List<CategoryDto> Map(this List<Category> categories)
         {
 			if (categories is null) return null;
 
@@ -17,39 +33,8 @@ namespace Query.CategoryAgg
 				SeoData = c.SeoData,
 				ParentId = c.ParentId,
 				CreationDate = c.CreationDate,
-				Children = c.Children.MapChildren()
+				Children = c.Children.Map()
 			}).ToList();
         }
-
-		public static List<CategoryChildrenDto> MapChildren(this List<Category> children)
-        {
-			if (children is null) return null;
-
-			return children.Select(c => new CategoryChildrenDto
-			{
-				Id = c.Id,
-				Title = c.Title,
-				Slug = c.Slug,
-				SeoData = c.SeoData,
-				ParentId = c.ParentId,
-				CreationDate = c.CreationDate,
-				Children = c.Children.MapSecondaryChildren()
-			}).ToList();
-        }
-
-		public static List<SecondaryCategoryChildren> MapSecondaryChildren(this List<Category> children)
-        {
-			if (children is null) return null;
-
-			return children.Select(c => new SecondaryCategoryChildren
-			{
-				Id = c.Id,
-				Title = c.Title,
-				Slug = c.Slug,
-				SeoData = c.SeoData,
-				ParentId = c.ParentId,
-				CreationDate = c.CreationDate,
-			}).ToList();
-		}
 	}
 }

@@ -14,7 +14,7 @@ namespace Query.CategoryAgg.GetAll
         public async Task<List<CategoryDto>> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
         {
             var categories = await _context.Categories.OrderByDescending(o => o.Id).ToListAsync();
-            return categories.MapAll();
+            return categories.Map();
         }
     }
 }
