@@ -20,9 +20,11 @@
 	  <None Remove="Infrastructure\" />
 	  <None Remove="Microsoft.EntityFrameworkCore" />
 	  <None Remove="Query\" />
+	  <None Remove="Query\Filter\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Infrastructure\" />
 	  <Folder Include="Query\" />
+	  <Folder Include="Query\Filter\" />
 	</ItemGroup>
 </Project>
