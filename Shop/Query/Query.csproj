@@ -15,6 +15,10 @@
     <None Remove="SellerAgg\" />
     <None Remove="SiteEntities\" />
     <None Remove="UserAgg\" />
+    <None Remove="CategoryAgg\GetById\" />
+    <None Remove="CategoryAgg\GetChildrenById\" />
+    <None Remove="CategoryAgg\GetAll\" />
+    <None Remove="CategoryAgg\DTOs\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -25,5 +29,12 @@
     <Folder Include="SellerAgg\" />
     <Folder Include="SiteEntities\" />
     <Folder Include="UserAgg\" />
+    <Folder Include="CategoryAgg\GetById\" />
+    <Folder Include="CategoryAgg\GetChildrenById\" />
+    <Folder Include="CategoryAgg\GetAll\" />
+    <Folder Include="CategoryAgg\DTOs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.EfCore\Infrastructure.csproj" />
   </ItemGroup>
 </Project>
