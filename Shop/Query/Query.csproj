@@ -24,6 +24,7 @@
     <None Remove="CommentAgg\GetById\" />
     <None Remove="OrderAgg\DTOs\" />
     <None Remove="OrderAgg\GetAllOrder\" />
+    <None Remove="OrderAgg\GetItems\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -43,6 +44,7 @@
     <Folder Include="CommentAgg\GetById\" />
     <Folder Include="OrderAgg\DTOs\" />
     <Folder Include="OrderAgg\GetAll\" />
+    <Folder Include="OrderAgg\GetItems\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.EfCore\Infrastructure.csproj" />
