@@ -13,5 +13,8 @@ namespace Infrastructure.Persistent.Dapper
 		public IDbConnection CreateConnection() => new SqlConnection(_connectionString);
 
 		public string Inventories => "[seller].Inventories";
+
+		public string Users => "[user].Users";
+		public string Orders => "[order].Orders";
 	}
 }

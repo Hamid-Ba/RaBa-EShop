@@ -1,5 +1,4 @@
-﻿using System;
-namespace Framework.Query
+﻿namespace Framework.Query
 {
     public class BaseDto
     {
@@ -10,4 +9,3 @@ namespace Framework.Query
     }
 
 }
-
