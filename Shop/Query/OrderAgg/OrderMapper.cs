@@ -6,6 +6,33 @@ namespace Query.OrderAgg
 {
     public static class OrderMapper
     {
+        public static OrderDto Map(this Order order , ShopContext context)
+        {
+            if (order is null) return null;
+
+            var user = context.Users.Select(u => new { Id = u.Id, FullName = $"{u.FirstName} {u.LastName}" }).ToList();
+
+            var result = new OrderDto
+            { 
+            
+                Id = order.Id,
+                UserId = order.UserId,
+                FullName = "",
+                TotalPrice = order.TotalPrice,
+                DiscountPrice = order.DiscountPrice,
+                PayAmount = order.PayAmount,
+                Method = order.Method,
+                Status = order.Status,
+                CreationDate = order.CreationDate,
+                Items = order.Items.MapItems(context),
+                Address = order.Address.MapAddress(),
+            };
+
+            result.FullName = user.FirstOrDefault(u => u.Id == result.UserId)?.FullName;
+
+            return result;
+        }
+
         public static List<OrderDto> Map(this List<Order> orders, ShopContext context)
         {
             if (orders is null) return null;
