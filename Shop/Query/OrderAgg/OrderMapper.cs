@@ -28,7 +28,7 @@ namespace Query.OrderAgg
                 Method = o.Method,
                 Status = o.Status,
                 CreationDate = o.CreationDate,
-                Items = o.Items.MapItems(context),
+                //Items = o.Items.MapItems(context),
                 Address = o.Address.MapAddress(),
             }).ToList();
 
