@@ -15,6 +15,8 @@ namespace Domain.SellerAgg
 
         public List<Inventory> Inventories { get; private set; }
 
+        private Seller() { }
+
         public Seller(long userId, string shopName, string nationalCode, ISellerDomainService sellerService)
         {
             Guard(shopName, nationalCode, sellerService);

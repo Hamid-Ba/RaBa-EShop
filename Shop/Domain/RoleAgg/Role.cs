@@ -11,6 +11,8 @@ namespace Domain.RoleAgg
 
         public List<RolePermission> Permissions { get; private set; }
 
+        private Role() { }
+
         public Role(string title, string description,List<RolePermission> permissions,IRoleDomainService roleService)
         {
             Guard(title, roleService);

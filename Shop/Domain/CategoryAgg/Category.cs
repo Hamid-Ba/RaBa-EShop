@@ -15,6 +15,8 @@ namespace Domain.CategoryAgg
 
         public List<Category> Children { get; private set; }
 
+        private Category() { }
+
         public Category(string title, string slug, SeoData seoData, ICategoryDomainService categoryService)
         {
             Guard(title, slug.ToSlug(), categoryService);

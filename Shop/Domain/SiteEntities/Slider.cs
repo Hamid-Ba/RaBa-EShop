@@ -12,6 +12,8 @@ namespace Domain.SiteEntities
         public SeoImage SeoImage { get; private set; }
         public bool IsActive { get; private set; }
 
+        private Slider() { }
+
         public Slider(string title, string link, string imageName, SeoImage seoImage)
         {
             Guard(title, link);

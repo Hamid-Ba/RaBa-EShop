@@ -7,6 +7,7 @@ using Domain.SellerAgg.Repository;
 using Domain.SiteEntities.Repository;
 using Domain.UserAgg.Repository;
 using Infrastructure.Persistent.Dapper;
+using Infrastructure.Persistent.EfCore;
 using Infrastructure.Persistent.EfCore.CategoryAgg;
 using Infrastructure.Persistent.EfCore.CommentAgg;
 using Infrastructure.Persistent.EfCore.OrderAgg;
@@ -15,6 +16,7 @@ using Infrastructure.Persistent.EfCore.RoleAgg;
 using Infrastructure.Persistent.EfCore.SellerAgg;
 using Infrastructure.Persistent.EfCore.SiteEntities.Repositories;
 using Infrastructure.Persistent.EfCore.UserAgg;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure
@@ -33,6 +35,9 @@ namespace Infrastructure
             service.AddTransient<ISliderRepository, SliderRepository>();
             service.AddTransient<IBannerRepository, BannerRepository>();
             service.AddTransient<IUserRepository, UserRepository>();
+
+            //Configure Main Context
+            service.AddDbContext<ShopContext>(options => options.UseSqlServer(connectionString));
 
             //Configure Dapper Context
             service.AddTransient(_ => new DapperContext(connectionString));

@@ -19,6 +19,8 @@ namespace Domain.UserAgg
         public List<UserWallet> Wallets { get; private set; }
         public List<UserAddress> Addresses { get; private set; }
 
+        private User() { }
+
         public User(string firstName, string lastName, string email, string phoneNumber, string password, string avatar,
             Gender gender, IUserDomainService userService)
         {

@@ -1,4 +1,6 @@
 ﻿using Configuration;
+using Framework.Application;
+using Framework.Application.SecurityUtil.Hashing;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +11,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-Bootstrapper.Confiure(builder.Services, builder.Configuration.GetConnectionString("Default"));
+builder.Services.Confiure(builder.Configuration.GetConnectionString("Default"));
+FrameworkBootstrapper.Init(builder.Services);
+builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
 
 var app = builder.Build();
 

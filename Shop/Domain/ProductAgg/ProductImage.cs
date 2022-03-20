@@ -11,6 +11,8 @@ namespace Domain.ProductAgg
         public SeoImage SeoImage { get; private set; }
         public int Sequence { get; private set; }
 
+        private ProductImage() { }
+
         public ProductImage(string imageName, SeoImage seoImage, int sequence)
         {
             Guard(imageName);

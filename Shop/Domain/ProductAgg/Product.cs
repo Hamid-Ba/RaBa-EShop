@@ -21,6 +21,8 @@ namespace Domain.ProductAgg
         public List<ProductImage> Images { get; private set; }
         public List<ProductSpecification> Specifications { get; private set; }
 
+        private Product() { }
+
         public Product(long categoryId, long subCategoryId, long secondarySubCategoryId, string title, string description,
             string imageName, string slug, SeoData seoDate, SeoImage seoImage, IProductDomainService productService)
         {

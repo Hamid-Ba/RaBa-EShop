@@ -54,12 +54,12 @@ namespace Infrastructure.Persistent.EfCore.ProductAgg
                config.ToTable("Images", "product");
                config.HasKey(k => k.Id);
 
-               builder.Property(p => p.ImageName).HasMaxLength(100).IsRequired();
+               config.Property(p => p.ImageName).HasMaxLength(100).IsRequired();
 
-               builder.OwnsOne(s => s.SeoImage, sConfig =>
+               config.OwnsOne(s => s.SeoImage, option =>
               {
-                  sConfig.Property(p => p.Title).HasMaxLength(75);
-                  sConfig.Property(p => p.Alternative).HasMaxLength(50);
+                  option.Property(p => p.Title).HasMaxLength(75);
+                  option.Property(p => p.Alternative).HasMaxLength(50);
               });
 
            });

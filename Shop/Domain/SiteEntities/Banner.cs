@@ -12,6 +12,8 @@ namespace Domain.SiteEntities
         public SeoImage SeoImage { get; private set; }
         public BannerPosition Position { get; private set; }
 
+        private Banner() { }
+
         public Banner(string link, string imageName, SeoImage seoImage, BannerPosition position)
         {
             Guard(link);
