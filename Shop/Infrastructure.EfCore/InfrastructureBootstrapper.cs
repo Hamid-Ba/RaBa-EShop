@@ -19,9 +19,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure
 {
-    public class InfrastructureBootstrapper
+    public static class InfrastructureBootstrapper
     {
-        public void Congiure(IServiceCollection service, string connectionString)
+        public static void Congiure(IServiceCollection service, string connectionString)
         {
             //Configure Repositories
             service.AddTransient<ICategoryRepository, CategoryRepository>();
