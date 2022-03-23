@@ -28,6 +28,7 @@
     <None Remove="OrderAgg\Get\" />
     <None Remove="ProductAgg\DTOs\" />
     <None Remove="ProductAgg\GetAll\" />
+    <None Remove="ProductAgg\GetById\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -48,9 +49,9 @@
     <Folder Include="OrderAgg\DTOs\" />
     <Folder Include="OrderAgg\GetAll\" />
     <Folder Include="OrderAgg\GetItems\" />
-    <Folder Include="OrderAgg\GetById\" />
     <Folder Include="ProductAgg\DTOs\" />
     <Folder Include="ProductAgg\GetAll\" />
+    <Folder Include="ProductAgg\GetById\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.EfCore\Infrastructure.csproj" />

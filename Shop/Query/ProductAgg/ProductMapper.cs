@@ -38,5 +38,54 @@ namespace Query.ProductAgg
 
             return null;
         }
+
+        public static ProductDto MapSingle(this Product product,ShopContext context)
+        {
+            if (product is null) return null;
+
+            return new ProductDto
+            {
+                Id = product.Id,
+                Title = product.Title,
+                Slug = product.Slug,
+                ImageName = product.ImageName,
+                SeoImage = product.SeoImage,
+                Description = product.Description,
+                Images = MapImages(product.Images),
+                Specifications = MapSpecifications(product.Specifications),
+                SeoDate = product.SeoDate,
+                CreationDate = product.CreationDate,
+                MainCategory = MapCategory(product.CategoryId, context),
+                SubCategory = MapCategory(product.SubCategoryId, context),
+                SecondarySubCategory = MapCategory(product.SecondarySubCategoryId, context)
+            };
+        }
+
+        private static List<ProductSpecificationDto> MapSpecifications(List<ProductSpecification> specifications)
+        {
+            if (specifications is null) return null;
+
+            return specifications.Select(s => new ProductSpecificationDto
+            {
+                Id = s.Id,
+                ProductId = s.ProductId,
+                Key = s.Key,
+                Value = s.Value
+            }).ToList();
+        }
+
+        private static List<ProductImageDto> MapImages(List<ProductImage> images)
+        {
+            if (images is null) return null;
+
+            return images.Select(i => new ProductImageDto
+            {
+                Id = i.Id,
+                ProductId = i.ProductId,
+                ImageName = i.ImageName,
+                SeoImage = i.SeoImage,
+                Sequence = i.Sequence
+            }).ToList();
+        }
     }
 }
