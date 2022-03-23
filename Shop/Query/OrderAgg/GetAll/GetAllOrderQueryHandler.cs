@@ -38,9 +38,11 @@ namespace Query.OrderAgg.GetAll
 
             #endregion
 
-            var ordersList = await orders.Skip((@params.PageId - 1) * @params.Take).ToListAsync();
+            var ordersList = await orders.Skip((@params.PageId - 1) * @params.Take).Take(@params.Take).ToListAsync();
 
             var result = new OrderFilterResult(ordersList.Map(_context), @params);
+
+            result.GeneratePaging(orders, @params.Take, @params.PageId);
 
             return result;
         }

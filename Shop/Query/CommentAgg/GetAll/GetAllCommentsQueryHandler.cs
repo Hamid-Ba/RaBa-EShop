@@ -33,7 +33,7 @@ namespace Query.CommentAgg.GetAll
 
             #endregion
 
-            var commentsList = await comments.Skip((@params.PageId - 1) * @params.Take).ToListAsync();
+            var commentsList = await comments.Skip((@params.PageId - 1) * @params.Take).Take(@params.Take).ToListAsync();
 
             var result = new CommentFilterResult(commentsList.Map(), @params);
 
