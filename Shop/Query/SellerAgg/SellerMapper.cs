@@ -6,7 +6,7 @@ namespace Query.SellerAgg
 {
     public static class SellerMapper
 	{
-		public static SellerDto Map(this Seller seller,ShopContext context)
+		public static SellerDto MapSingle(this Seller seller,ShopContext context)
         {
 			if (seller is null) return null;
 
@@ -26,7 +26,7 @@ namespace Query.SellerAgg
 			};
         }
 
-		public static SellerDto MapSingle(this Seller seller,ShopContext context)
+		public static SellerDto Map(this Seller seller,ShopContext context)
         {
 			if (seller is null) return null;
 
