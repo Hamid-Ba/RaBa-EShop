@@ -26,6 +26,26 @@ namespace Query.UserAgg
 			};
         }
 
+		public static UserFilterDto Map(this User user,ShopContext context)
+        {
+			if (user is null) return null;
+
+			return new UserFilterDto
+			{
+				Id = user.Id,
+				FirstName = user.FirstName,
+				LastName = user.LastName,
+				Email = user.Email,
+				PhoneNumber = user.PhoneNumber,
+				Gender = user.Gender,
+				Avatar = user.Avatar,
+				CreationDate = user.CreationDate,
+				Roles = MapRoles(user.Roles, context),
+				IsDelete = user.IsDelete,
+				DeleteDate = user.DeleteDate
+			};
+		}
+
         private static  List<UserRoleDto> MapRoles(List<UserRole> roles,ShopContext context)
         {
 			if (roles is null) return null;
