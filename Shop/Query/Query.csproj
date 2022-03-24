@@ -46,6 +46,7 @@
     <None Remove="SiteEntities\Sliders\GetAll\" />
     <None Remove="UserAgg\DTOs\" />
     <None Remove="UserAgg\GetById\" />
+    <None Remove="UserAgg\GetByPhoneNumber\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -86,6 +87,7 @@
     <Folder Include="SiteEntities\Sliders\GetAll\" />
     <Folder Include="UserAgg\DTOs\" />
     <Folder Include="UserAgg\GetById\" />
+    <Folder Include="UserAgg\GetByPhoneNumber\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.EfCore\Infrastructure.csproj" />
