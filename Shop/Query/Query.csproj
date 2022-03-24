@@ -36,6 +36,14 @@
     <None Remove="SellerAgg\DTOs\" />
     <None Remove="SellerAgg\Get\" />
     <None Remove="SellerAgg\GetAll\" />
+    <None Remove="SiteEntities\Banners\" />
+    <None Remove="SiteEntities\Sliders\" />
+    <None Remove="SiteEntities\Banners\DTOs\" />
+    <None Remove="SiteEntities\Sliders\DTOs\" />
+    <None Remove="SiteEntities\Banners\Get\" />
+    <None Remove="SiteEntities\Sliders\Get\" />
+    <None Remove="SiteEntities\Banners\GetAll\" />
+    <None Remove="SiteEntities\Sliders\GetAll\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -66,6 +74,14 @@
     <Folder Include="SellerAgg\DTOs\" />
     <Folder Include="SellerAgg\Get\" />
     <Folder Include="SellerAgg\GetAll\" />
+    <Folder Include="SiteEntities\Banners\" />
+    <Folder Include="SiteEntities\Sliders\" />
+    <Folder Include="SiteEntities\Banners\DTOs\" />
+    <Folder Include="SiteEntities\Sliders\DTOs\" />
+    <Folder Include="SiteEntities\Banners\Get\" />
+    <Folder Include="SiteEntities\Sliders\Get\" />
+    <Folder Include="SiteEntities\Banners\GetAll\" />
+    <Folder Include="SiteEntities\Sliders\GetAll\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.EfCore\Infrastructure.csproj" />
