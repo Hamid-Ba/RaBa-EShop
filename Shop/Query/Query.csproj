@@ -32,6 +32,7 @@
     <None Remove="ProductAgg\GetBySlug\" />
     <None Remove="RoleAgg\DTOs\" />
     <None Remove="RoleAgg\Get\" />
+    <None Remove="RoleAgg\GetAll\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -58,6 +59,7 @@
     <Folder Include="ProductAgg\GetBySlug\" />
     <Folder Include="RoleAgg\DTOs\" />
     <Folder Include="RoleAgg\Get\" />
+    <Folder Include="RoleAgg\GetAll\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.EfCore\Infrastructure.csproj" />
