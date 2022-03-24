@@ -1,5 +1,6 @@
 ﻿using Framework.Query;
 using Infrastructure.Persistent.EfCore;
+using Microsoft.EntityFrameworkCore;
 using Query.SellerAgg.DTOs;
 
 namespace Query.SellerAgg.GetAll
@@ -23,7 +24,7 @@ namespace Query.SellerAgg.GetAll
 
             var skip = (@params.PageId - 1) * @params.Take;
 
-            var result = new SellerFilterResult(sellers.Skip(skip).Take(@params.Take).Select(s => s.Map(_context)).ToList(), @params);
+            var result = new SellerFilterResult(await sellers.Skip(skip).Take(@params.Take).Select(s => s.Map(_context)).ToListAsync(), @params);
 
             result.GeneratePaging(sellers, @params.Take, @params.PageId);
 

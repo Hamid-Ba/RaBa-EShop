@@ -13,7 +13,7 @@ namespace Query.SellerAgg.DTOs
         public SellerStatus Status { get; set; }
         public string StatusDescriber { get; set; }
 
-        public List<InventoryDto> Inventories { get; set; }
+        public List<InventoryDto?> Inventories { get; set; }
     }
 
     public class InventoryDto : BaseDto
