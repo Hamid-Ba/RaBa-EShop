@@ -17,6 +17,9 @@
     <None Remove="ProductAgg\" />
     <None Remove="RoleAgg\" />
     <None Remove="SellerAgg\" />
+    <None Remove="SiteEntities\" />
+    <None Remove="SiteEntities\Bannerts\" />
+    <None Remove="SiteEntities\Sliders\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -25,5 +28,8 @@
     <Folder Include="ProductAgg\" />
     <Folder Include="RoleAgg\" />
     <Folder Include="SellerAgg\" />
+    <Folder Include="SiteEntities\" />
+    <Folder Include="SiteEntities\Banners\" />
+    <Folder Include="SiteEntities\Sliders\" />
   </ItemGroup>
 </Project>
