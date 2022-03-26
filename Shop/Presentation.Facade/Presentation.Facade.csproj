@@ -20,6 +20,8 @@
     <None Remove="SiteEntities\" />
     <None Remove="SiteEntities\Bannerts\" />
     <None Remove="SiteEntities\Sliders\" />
+    <None Remove="UserAgg\" />
+    <None Remove="UserAgg\UserAddress\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -31,5 +33,7 @@
     <Folder Include="SiteEntities\" />
     <Folder Include="SiteEntities\Banners\" />
     <Folder Include="SiteEntities\Sliders\" />
+    <Folder Include="UserAgg\" />
+    <Folder Include="UserAgg\UserAddress\" />
   </ItemGroup>
 </Project>
