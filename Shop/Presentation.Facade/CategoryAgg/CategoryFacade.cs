@@ -24,8 +24,8 @@ namespace Presentation.Facade.CategoryAgg
 
         public async Task<List<CategoryDto>> GetAll() => await _mediator.Send(new GetAllCategoryQuery());
 
-        public async Task<CategoryDto> GetCategoryById(long id) => await _mediator.Send(new GetCategoryByIdQuery(id));
+        public async Task<CategoryDto> GetCategoryBy(long id) => await _mediator.Send(new GetCategoryByIdQuery(id));
 
-        public async Task<List<CategoryDto>> GetCategoryChildrenById(long parentId) => await _mediator.Send(new GetCategoryChildrenByIdQuery(parentId));
+        public async Task<List<CategoryDto>> GetCategoryChildrenBy(long parentId) => await _mediator.Send(new GetCategoryChildrenByIdQuery(parentId));
     }
 }

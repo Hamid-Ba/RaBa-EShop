@@ -16,8 +16,8 @@ namespace Presentation.Facade.CategoryAgg
 
         #region Query
         Task<List<CategoryDto>> GetAll();
-        Task<CategoryDto> GetCategoryById(long id);
-        Task<List<CategoryDto>> GetCategoryChildrenById(long parentId);
+        Task<CategoryDto> GetCategoryBy(long id);
+        Task<List<CategoryDto>> GetCategoryChildrenBy(long parentId);
         #endregion
 
     }

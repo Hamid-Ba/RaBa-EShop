@@ -20,6 +20,6 @@ namespace Presentation.Facade.CommentAgg
 
         public async Task<CommentFilterResult> GetAll(CommentFilterParam filter) => await _mediator.Send(new GetAllCommentsQuery(filter));
 
-        public async Task<CommentDto> GetById(long id) => await _mediator.Send(new GetCommentByIdQuery(id));
+        public async Task<CommentDto> GetBy(long id) => await _mediator.Send(new GetCommentByIdQuery(id));
     }
 }

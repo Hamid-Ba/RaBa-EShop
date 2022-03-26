@@ -13,7 +13,7 @@ namespace Presentation.Facade.CommentAgg
         #endregion
 
         #region Query
-        Task<CommentDto> GetById(long id);
+        Task<CommentDto> GetBy(long id);
         Task<CommentFilterResult> GetAll(CommentFilterParam filter);
         #endregion
     }
