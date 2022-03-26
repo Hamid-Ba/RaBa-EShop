@@ -10,4 +10,10 @@
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Query\Query.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="CategoryAgg\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CategoryAgg\" />
+  </ItemGroup>
 </Project>
