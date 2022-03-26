@@ -16,6 +16,7 @@
     <None Remove="OrderAgg\" />
     <None Remove="ProductAgg\" />
     <None Remove="RoleAgg\" />
+    <None Remove="SellerAgg\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -23,5 +24,6 @@
     <Folder Include="OrderAgg\" />
     <Folder Include="ProductAgg\" />
     <Folder Include="RoleAgg\" />
+    <Folder Include="SellerAgg\" />
   </ItemGroup>
 </Project>
