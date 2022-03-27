@@ -15,7 +15,7 @@ namespace Domain.CategoryAgg
 
         public List<Category> Children { get; private set; }
 
-        private Category() { }
+        private Category() => Children = new();
 
         public Category(string title, string slug, SeoData seoData, ICategoryDomainService categoryService)
         {
@@ -24,6 +24,8 @@ namespace Domain.CategoryAgg
             Title = title;
             Slug = slug.ToSlug();
             SeoData = seoData;
+
+            Children = new();
         }
 
         public void Edit(string title, string slug, SeoData seoData, ICategoryDomainService categoryService)
