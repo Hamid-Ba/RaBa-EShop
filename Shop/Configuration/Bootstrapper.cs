@@ -13,6 +13,7 @@ using FluentValidation;
 using Infrastructure;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Presentation.Facade;
 using Query.CategoryAgg;
 
 namespace Configuration;
@@ -23,6 +24,9 @@ public static class Bootstrapper
     {
         //Add Repositories Dependencies
         InfrastructureBootstrapper.Congiure(services, connectionString);
+
+        //Add Facade Dependencies
+        FacadeBootstrapper.Congiure(services);
 
         //Add Applications Dependencies
         services.AddMediatR(typeof(CreateCategoryCommand).Assembly);
