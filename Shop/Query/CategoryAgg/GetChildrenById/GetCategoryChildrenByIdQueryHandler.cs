@@ -13,7 +13,7 @@ namespace Query.CategoryAgg.GetChildrenById
 
         public async Task<List<CategoryDto>> Handle(GetCategoryChildrenByIdQuery request, CancellationToken cancellationToken)
         {
-            var children = await _context.Categories.Where(c => c.ParentId == request.ParentId).ToListAsync();
+            var children = await _context.Categories.Where(c => c.ParentId == request.ParentId).Include(c => c.Children).ToListAsync();
             return children.Map();
         }
     }

@@ -13,7 +13,10 @@ namespace Query.CategoryAgg.GetAll
 
         public async Task<List<CategoryDto>> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
         {
-            var categories = await _context.Categories.OrderByDescending(o => o.Id).ToListAsync();
+            var categories = await _context.Categories.Where(c => c.ParentId == null)
+                .Include(c => c.Children)
+                .ThenInclude(c => c.Children)
+                .OrderByDescending(o => o.Id).ToListAsync();
             return categories.Map();
         }
     }
