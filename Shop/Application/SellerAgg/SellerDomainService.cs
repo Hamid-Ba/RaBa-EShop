@@ -1,17 +1,17 @@
-﻿using Domain.SellerAgg.Services;
+﻿using Domain.SellerAgg.Repository;
+using Domain.SellerAgg.Services;
 
 namespace Application.SellerAgg
 {
     public class SellerDomainService : ISellerDomainService
     {
-        public bool IsSellerExistWithThis(long userId)
-        {
-            throw new NotImplementedException();
-        }
+        private readonly ISellerRepository _sellerRepository;
 
-        public bool IsSellerExistWithThis(string nationalCode)
-        {
-            throw new NotImplementedException();
-        }
+        public SellerDomainService(ISellerRepository sellerRepository) => _sellerRepository = sellerRepository;
+
+        public bool IsSellerExistWithThis(long userId) => _sellerRepository.Exists(s => s.UserId == userId);
+
+        public bool IsSellerExistWithThis(string nationalCode) => _sellerRepository.Exists(s => s.NationalCode == nationalCode);
+        
     }
 }

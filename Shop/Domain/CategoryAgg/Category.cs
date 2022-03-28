@@ -47,13 +47,13 @@ namespace Domain.CategoryAgg
 
         #endregion
 
-        public async void Guard(string title, string slug, ICategoryDomainService categoryService)
+        public void Guard(string title, string slug, ICategoryDomainService categoryService)
         {
             NullOrEmptyDomainDataException.CheckString(title, nameof(title));
             NullOrEmptyDomainDataException.CheckString(slug, nameof(slug));
 
             if (Slug != slug)
-                if (await categoryService.IsSlugExist(slug)) throw new InvalidDomainDataException("این اسلاگ ثبت شده است");
+                if (categoryService.IsSlugExist(slug)) throw new InvalidDomainDataException("این اسلاگ ثبت شده است");
         }
 
     }

@@ -2,6 +2,6 @@
 {
     public interface IRoleDomainService
     {
-        Task<bool> IsThisTitleExist(string title);
+        bool IsThisTitleExist(string title);
     }
 }

@@ -1,17 +1,17 @@
-﻿using Domain.UserAgg.Services;
+﻿using Domain.UserAgg.Repository;
+using Domain.UserAgg.Services;
 
 namespace Application.UserAgg
 {
     public class UserDomainService : IUserDomainService
     {
-        public Task<bool> IsEmailExist(string email)
-        {
-            throw new NotImplementedException();
-        }
+        private readonly IUserRepository _userRepository;
 
-        public Task<bool> IsPhoneNumberExist(string phoneNumber)
-        {
-            throw new NotImplementedException();
-        }
+        public UserDomainService(IUserRepository userRepository) => _userRepository = userRepository;
+
+        public bool IsEmailExist(string email) => _userRepository.Exists(u => u.Email == email);
+
+        public bool IsPhoneNumberExist(string phoneNumber) => _userRepository.Exists(u => u.PhoneNumber == phoneNumber);
+        
     }
 }

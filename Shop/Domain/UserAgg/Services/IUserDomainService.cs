@@ -2,7 +2,7 @@
 {
     public interface IUserDomainService
     {
-        Task<bool> IsEmailExist(string email);
-        Task<bool> IsPhoneNumberExist(string phoneNumber);
+        bool IsEmailExist(string email);
+        bool IsPhoneNumberExist(string phoneNumber);
     }
 }

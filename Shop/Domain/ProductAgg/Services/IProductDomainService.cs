@@ -2,6 +2,6 @@
 {
     public interface IProductDomainService
     {
-        Task<bool> IsSlugExist(string slug);
+        bool IsSlugExist(string slug);
     }
 }

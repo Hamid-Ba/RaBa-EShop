@@ -105,14 +105,14 @@ namespace Domain.ProductAgg
 
         #endregion
 
-        public async void Guard(string title, string description, string slug, IProductDomainService productService)
+        public void Guard(string title, string description, string slug, IProductDomainService productService)
         {
             NullOrEmptyDomainDataException.CheckString(title, nameof(title));
             NullOrEmptyDomainDataException.CheckString(description, nameof(description));
             NullOrEmptyDomainDataException.CheckString(slug, nameof(slug));
 
             if (Slug != slug)
-                if (await productService.IsSlugExist(slug)) throw new InvalidDomainDataException("این اسلاگ استفاده شده است");
+                if (productService.IsSlugExist(slug)) throw new InvalidDomainDataException("این اسلاگ استفاده شده است");
         }
 
     }

@@ -40,12 +40,12 @@ namespace Domain.RoleAgg
             AddPermission(permissions);
         }
 
-        public async void Guard(string title,IRoleDomainService roleService)
+        public void Guard(string title,IRoleDomainService roleService)
         {
             NullOrEmptyDomainDataException.CheckString(title,nameof(title));
 
             if(Title != title)
-                if(await roleService.IsThisTitleExist(title)) throw new InvalidDomainDataException("این عنوان قبلا ثبت شده است");
+                if(roleService.IsThisTitleExist(title)) throw new InvalidDomainDataException("این عنوان قبلا ثبت شده است");
         }
     }
 }

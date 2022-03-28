@@ -121,7 +121,7 @@ namespace Domain.UserAgg
 
         #region Guards
 
-        private async void GuardByPhoneNumber(string phoneNumber, string password, IUserDomainService userService)
+        private void GuardByPhoneNumber(string phoneNumber, string password, IUserDomainService userService)
         {
             NullOrEmptyDomainDataException.CheckString(phoneNumber, nameof(phoneNumber));
             NullOrEmptyDomainDataException.CheckString(password, nameof(password));
@@ -129,10 +129,10 @@ namespace Domain.UserAgg
             if (phoneNumber.Length != 11) throw new InvalidDomainDataException("فرمت شماره همراه درست نمی باشد");
 
             if (PhoneNumber != phoneNumber)
-                if (await userService.IsPhoneNumberExist(phoneNumber)) throw new InvalidDomainDataException("همچین شماره همراهی وجود دارد");
+                if (userService.IsPhoneNumberExist(phoneNumber)) throw new InvalidDomainDataException("همچین شماره همراهی وجود دارد");
         }
 
-        private async void GuardByEmail(string email, string password, IUserDomainService userService)
+        private void GuardByEmail(string email, string password, IUserDomainService userService)
         {
             NullOrEmptyDomainDataException.CheckString(email, nameof(email));
             NullOrEmptyDomainDataException.CheckString(password, nameof(password));
@@ -140,11 +140,9 @@ namespace Domain.UserAgg
             if (!EmailValidation.IsValidEmail(email)) throw new InvalidDomainDataException("فرمت ایمیل درست نمی باشد");
 
             if (Email != email)
-                if (await userService.IsEmailExist(email)) throw new InvalidDomainDataException("همچین ایمیلی وجود دارد");
+                if (userService.IsEmailExist(email)) throw new InvalidDomainDataException("همچین ایمیلی وجود دارد");
         }
 
         #endregion
-
-
     }
 }
