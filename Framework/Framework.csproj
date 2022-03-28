@@ -21,10 +21,14 @@
 	  <None Remove="Microsoft.EntityFrameworkCore" />
 	  <None Remove="Query\" />
 	  <None Remove="Query\Filter\" />
+	  <None Remove="Presentation\" />
+	  <None Remove="Presentation\Api\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Infrastructure\" />
 	  <Folder Include="Query\" />
 	  <Folder Include="Query\Filter\" />
+	  <Folder Include="Presentation\" />
+	  <Folder Include="Presentation\Api\" />
 	</ItemGroup>
 </Project>
