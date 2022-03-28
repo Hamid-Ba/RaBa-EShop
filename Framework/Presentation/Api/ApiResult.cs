@@ -3,7 +3,7 @@
     public class ApiResult
 	{
         public bool IsSuccess { get; set; }
-        public ApiMetaDate MetaDate { get; set; }
+        public ApiMetaDate MetaData { get; set; }
     }
 
     public class ApiResult<TData> : ApiResult

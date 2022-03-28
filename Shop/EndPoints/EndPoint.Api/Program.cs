@@ -1,6 +1,7 @@
 ﻿using Configuration;
 using Framework.Application;
 using Framework.Application.SecurityUtil.Hashing;
+using Framework.Presentation.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseApiCustomExceptionHandler();
+
 
 app.MapControllers();
 
