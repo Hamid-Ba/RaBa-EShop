@@ -17,7 +17,7 @@ namespace Application.CategoryAgg.Edit
 
         public async Task<OperationResult> Handle(EditCategoryCommand request, CancellationToken cancellationToken)
         {
-            var category = await _categoryRepository.GetEntityAsyncBy(request.id);
+            var category = await _categoryRepository.GetAsTrackingAsyncBy(request.id);
             if (category is null) return OperationResult.NotFound();
 
             category.Edit(request.Title, request.Slug, request.SeoData, _categoryDomainService);
