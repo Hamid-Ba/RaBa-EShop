@@ -25,6 +25,12 @@ namespace Infrastructure
     {
         public static void Congiure(IServiceCollection service, string connectionString)
         {
+            //Configure Main Context
+            service.AddDbContext<ShopContext>(options => options.UseSqlServer(connectionString));
+
+            //Configure Dapper Context
+            service.AddTransient(_ => new DapperContext(connectionString));
+
             //Configure Repositories
             service.AddTransient<ICategoryRepository, CategoryRepository>();
             service.AddTransient<ICommentRepository, CommentRepository>();
@@ -35,12 +41,6 @@ namespace Infrastructure
             service.AddTransient<ISliderRepository, SliderRepository>();
             service.AddTransient<IBannerRepository, BannerRepository>();
             service.AddTransient<IUserRepository, UserRepository>();
-
-            //Configure Main Context
-            service.AddDbContext<ShopContext>(options => options.UseSqlServer(connectionString));
-
-            //Configure Dapper Context
-            service.AddTransient(_ => new DapperContext(connectionString));
         }
     }
 }

@@ -12,20 +12,20 @@ using Presentation.Facade.UserAgg.UserAddress;
 
 namespace Presentation.Facade
 {
-    public class FacadeBootstrapper
+    public static class FacadeBootstrapper
 	{
-		public static void Congiure(IServiceCollection service)
+		public static void FacadeCongiure(this IServiceCollection service)
         {
-			service.AddTransient<ICategoryFacade, CategoryFacade>();
-			service.AddTransient<ICommentFacade, CommentFacade>();
-			service.AddTransient<IOrderFacade, OrderFacade>();
-			service.AddTransient<IProductFacade, ProductFacade>();
-			service.AddTransient<IRoleFacade, RoleFacade>();
-			service.AddTransient<ISellerFacade, SellerFacade>();
-			service.AddTransient<IBannerFacade, BannerFacade>();
-			service.AddTransient<ISliderFacade, SliderFacade>();
-			service.AddTransient<IUserFacade, UserFacade>();
-			service.AddTransient<IUserAddressFacade, UserAddressFacade>();
+			service.AddScoped<ICategoryFacade, CategoryFacade>();
+			service.AddScoped<ICommentFacade, CommentFacade>();
+			service.AddScoped<IOrderFacade, OrderFacade>();
+			service.AddScoped<IProductFacade, ProductFacade>();
+			service.AddScoped<IRoleFacade, RoleFacade>();
+			service.AddScoped<ISellerFacade, SellerFacade>();
+			service.AddScoped<IBannerFacade, BannerFacade>();
+			service.AddScoped<ISliderFacade, SliderFacade>();
+			service.AddScoped<IUserFacade, UserFacade>();
+			service.AddScoped<IUserAddressFacade, UserAddressFacade>();
         }
 	}
 }

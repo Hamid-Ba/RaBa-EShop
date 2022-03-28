@@ -17,6 +17,7 @@ namespace Query.CategoryAgg.GetAll
                 .Include(c => c.Children)
                 .ThenInclude(c => c.Children)
                 .OrderByDescending(o => o.Id).ToListAsync();
+
             return categories.Map();
         }
     }

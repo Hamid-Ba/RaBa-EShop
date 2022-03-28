@@ -17,7 +17,7 @@ namespace Query.CategoryAgg
 				Slug = category.Slug,
 				SeoData = category.SeoData,
 				CreationDate = category.CreationDate,
-				Children = category.Children.Map()
+                Children = category.Children.Map()
 			};
         }
 

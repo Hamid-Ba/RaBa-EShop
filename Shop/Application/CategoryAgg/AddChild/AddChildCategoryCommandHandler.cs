@@ -18,8 +18,8 @@ namespace Application.CategoryAgg.AddChild
 
         public async Task<OperationResult> Handle(AddChildCategoryCommand request, CancellationToken cancellationToken)
         {
-            var category = await _categoryRepository.GetEntityAsyncBy(request.ParentId);
-            if (category is null) OperationResult.NotFound();
+            var category = await _categoryRepository.GetAsTrackingAsyncBy(request.ParentId);
+            if (category is null) return OperationResult.NotFound();
 
             var child = new Category(request.Title, request.Slug, request.SeoData, _categoryDomainService);
             category.AddChild(child);

@@ -17,6 +17,7 @@ namespace Framework.Infrastructure
 
         public TEntity GetEntityBy(object id) => _context.Set<TEntity>().Find(id);
         public async Task<TEntity> GetEntityAsyncBy(object id) => await _context.Set<TEntity>().FindAsync(id);
+        public async Task<TEntity> GetAsTrackingAsyncBy(object id) => await _context.Set<TEntity>().AsTracking().FirstOrDefaultAsync(t => t.Id == (long)id);
 
         //Create
         public object AddEntity(TEntity entity) => _context.Set<TEntity>().Add(entity);
@@ -62,5 +63,7 @@ namespace Framework.Infrastructure
         public void SaveChanges() => _context.SaveChanges();
 
         public Task SaveChangesAsync() => _context.SaveChangesAsync();
+
+        
     }
 }

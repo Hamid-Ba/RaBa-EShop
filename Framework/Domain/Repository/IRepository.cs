@@ -10,6 +10,7 @@ namespace Framework.Domain.Repository
 
         //Read ONE
         Task<TEntity> GetEntityAsyncBy(object id);
+        Task<TEntity> GetAsTrackingAsyncBy(object id);
         TEntity GetEntityBy(object id);
 
         //Create One&Range
