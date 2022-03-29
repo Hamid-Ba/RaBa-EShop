@@ -4,11 +4,11 @@ using Framework.Application;
 
 namespace Application.OrderAgg.Checkout
 {
-    public class CheckoutCommandHanler : IBaseCommandHandler<CheckoutCommand>
+    public class CheckoutCommandHandler : IBaseCommandHandler<CheckoutCommand>
     {
         private readonly IOrderRepository _orderRepository;
 
-        public CheckoutCommandHanler(IOrderRepository orderRepository) => _orderRepository = orderRepository;
+        public CheckoutCommandHandler(IOrderRepository orderRepository) => _orderRepository = orderRepository;
 
         public async Task<OperationResult> Handle(CheckoutCommand request, CancellationToken cancellationToken)
         {

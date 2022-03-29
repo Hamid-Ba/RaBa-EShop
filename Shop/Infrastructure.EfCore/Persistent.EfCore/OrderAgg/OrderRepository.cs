@@ -11,7 +11,7 @@ namespace Infrastructure.Persistent.EfCore.OrderAgg
 
         public OrderRepository(ShopContext context) : base(context) => _context = context;
 
-        public Task<Order> GetUserOpenOrderBy(long userId) => _context.Orders.FirstOrDefaultAsync(o => o.UserId == userId);
+        public async Task<Order> GetUserOpenOrderBy(long userId) =>await _context.Orders.AsTracking().FirstOrDefaultAsync(o => o.UserId == userId);
 
     }
 }

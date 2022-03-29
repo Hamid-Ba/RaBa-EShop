@@ -11,7 +11,7 @@ namespace Application.OrderAgg.ChangeStatus
 
         public async Task<OperationResult> Handle(ChangeStatusCommand request, CancellationToken cancellationToken)
         {
-            var order = await _orderRepository.GetEntityAsyncBy(request.OrderId);
+            var order = await _orderRepository.GetAsTrackingAsyncBy(request.OrderId);
             if (order is null) return OperationResult.NotFound();
 
             order.ChangeStatus(request.Status);
