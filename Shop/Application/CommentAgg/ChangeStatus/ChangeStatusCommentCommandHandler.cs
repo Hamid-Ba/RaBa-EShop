@@ -11,7 +11,7 @@ namespace Application.CommentAgg.ChangeStatus
 
         public async Task<OperationResult> Handle(ChangeStatusCommentCommand request, CancellationToken cancellationToken)
         {
-            var comment = await _commentRepository.GetEntityAsyncBy(request.Id);
+            var comment = await _commentRepository.GetAsTrackingAsyncBy(request.Id);
             if (comment is null) return OperationResult.NotFound();
 
             comment.ChangeStatus(request.Status);
