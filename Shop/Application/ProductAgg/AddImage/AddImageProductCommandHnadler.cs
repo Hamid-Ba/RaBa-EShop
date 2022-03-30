@@ -13,7 +13,7 @@ namespace Application.ProductAgg.AddImage
 
         public async Task<OperationResult> Handle(AddImageProductCommand request, CancellationToken cancellationToken)
         {
-            var product = await _productRepository.GetEntityAsyncBy(request.ProdcutId);
+            var product = await _productRepository.GetAsTrackingAsyncBy(request.ProdcutId);
             if (product is null) return OperationResult.NotFound();
 
             var imageName = Uploader.ImageUploader(request.ImageName, DirectoryImages.ProductGallery, null!);

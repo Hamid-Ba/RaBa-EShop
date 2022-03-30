@@ -11,7 +11,7 @@ namespace Application.ProductAgg.DeleteImage
 
         public async Task<OperationResult> Handle(DeleteImageProductCommand request, CancellationToken cancellationToken)
         {
-            var product = await _productRepository.GetEntityAsyncBy(request.ProductId);
+            var product = await _productRepository.GetAsTrackingAsyncBy(request.ProductId);
             if (product is null) return OperationResult.NotFound();
 
             product.DeleteImage(request.ImageId);
