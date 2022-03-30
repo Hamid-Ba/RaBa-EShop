@@ -31,9 +31,9 @@ namespace Presentation.Facade.ProductAgg
 
         public async Task<ProductFilterResult> GetAll(ProductFilterParam filter) => await _mediator.Send(new GetAllProductsQuery(filter));
 
-        public async Task<ProductDto> GetBy(string slug) => await _mediator.Send(new GetProductBySlugQuery(slug));
+        public async Task<ProductDto> GetBy(long id) => await _mediator.Send(new GetProductByIdQuery(id));
 
-        public async Task<ProductDto> GeyBy(long id) => await _mediator.Send(new GetProductByIdQuery(id));
+        public async Task<ProductDto> GetBy(string slug) => await _mediator.Send(new GetProductBySlugQuery(slug));
         
     }
 }

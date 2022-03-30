@@ -20,7 +20,7 @@ namespace Presentation.Facade.ProductAgg
         #endregion
 
         #region Query
-        Task<ProductDto> GeyBy(long id);
+        Task<ProductDto> GetBy(long id);
         Task<ProductDto> GetBy(string slug);
         Task<ProductFilterResult> GetAll(ProductFilterParam filter);
         #endregion

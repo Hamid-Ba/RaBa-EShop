@@ -1,12 +1,6 @@
-﻿using Domain.ProductAgg;
-using Framework.Application;
+﻿using Framework.Application;
 using Framework.Domain.ValueObjects;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.ProductAgg.Create
 {
