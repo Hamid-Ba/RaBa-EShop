@@ -18,7 +18,7 @@ namespace Application.RoleAgg.Edit
 
         public async Task<OperationResult> Handle(EditRoleCommand request, CancellationToken cancellationToken)
         {
-            var role = await _roleRepository.GetEntityAsyncBy(request.Id);
+            var role = await _roleRepository.GetAsTrackingAsyncBy(request.Id);
             if (role is null) return OperationResult.NotFound();
 
             role.Edit(request.Title, request.Description, _roleDomainService);
