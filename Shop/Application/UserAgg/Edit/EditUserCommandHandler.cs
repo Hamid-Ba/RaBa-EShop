@@ -19,7 +19,7 @@ namespace Application.UserAgg.Edit
 
         public async Task<OperationResult> Handle(EditUserCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetEntityAsyncBy(request.Id);
+            var user = await _userRepository.GetAsTrackingAsyncBy(request.Id);
             if (user is null) return OperationResult.NotFound();
 
             var imageName = Uploader.ImageUploader(request.Avatar, DirectoryImages.Avatars, request.AvatarName);

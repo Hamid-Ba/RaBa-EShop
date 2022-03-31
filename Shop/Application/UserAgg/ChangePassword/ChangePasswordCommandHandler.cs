@@ -17,7 +17,7 @@ namespace Application.UserAgg.ChangePassword
 
         public async Task<OperationResult> Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetEntityAsyncBy(request.Id);
+            var user = await _userRepository.GetAsTrackingAsyncBy(request.Id);
             if (user is null) return OperationResult.NotFound();
 
             string newPassword = "";

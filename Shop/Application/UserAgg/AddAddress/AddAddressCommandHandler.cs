@@ -12,7 +12,7 @@ namespace Application.UserAgg.AddAddress
 
         public async Task<OperationResult> Handle(AddAddressCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetEntityAsyncBy(request.UserId);
+            var user = await _userRepository.GetAsTrackingAsyncBy(request.UserId);
             if (user is null) return OperationResult.NotFound();
 
             var address = new UserAddress(request.FullName, request.PhoneNumber, request.Province, request.City,

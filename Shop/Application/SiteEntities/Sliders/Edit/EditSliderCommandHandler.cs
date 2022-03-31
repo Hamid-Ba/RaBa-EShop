@@ -12,7 +12,7 @@ namespace Application.SiteEntities.Sliders.Edit
 
         public async Task<OperationResult> Handle(EditSliderCommand request, CancellationToken cancellationToken)
         {
-            var slider = await _sliderRepository.GetEntityAsyncBy(request.Id);
+            var slider = await _sliderRepository.GetAsTrackingAsyncBy(request.Id);
             if (slider is null) return OperationResult.NotFound();
 
             var imageName = Uploader.ImageUploader(request.ImageFile, DirectoryImages.Sliders, request.ImageName);

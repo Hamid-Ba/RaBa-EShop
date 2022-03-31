@@ -11,7 +11,7 @@ namespace Application.UserAgg.DeleteAddress
 
         public async Task<OperationResult> Handle(DeleteAddressCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetEntityAsyncBy(request.UserId);
+            var user = await _userRepository.GetAsTrackingAsyncBy(request.UserId);
             if (user is null) return OperationResult.NotFound();
 
             user.DeleteAddress(request.AddressId);
