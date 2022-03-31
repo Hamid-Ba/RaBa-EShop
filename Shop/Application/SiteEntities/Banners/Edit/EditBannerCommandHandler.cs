@@ -12,7 +12,7 @@ namespace Application.SiteEntities.Banners.Edit
 
         public async Task<OperationResult> Handle(EditBannerCommand request, CancellationToken cancellationToken)
         {
-            var banner = await _bannerRepository.GetEntityAsyncBy(request.Id);
+            var banner = await _bannerRepository.GetAsTrackingAsyncBy(request.Id);
             if (banner is null) return OperationResult.NotFound();
 
             var imageName = Uploader.ImageUploader(request.ImageFile, DirectoryImages.Banners, request.ImageName);
