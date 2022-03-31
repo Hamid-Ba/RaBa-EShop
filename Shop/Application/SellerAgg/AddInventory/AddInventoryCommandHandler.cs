@@ -12,7 +12,7 @@ namespace Application.SellerAgg.AddInventory
 
         public async Task<OperationResult> Handle(AddInventoryCommand request, CancellationToken cancellationToken)
         {
-            var seller = await _sellerRepository.GetEntityAsyncBy(request.SellerId);
+            var seller = await _sellerRepository.GetAsTrackingAsyncBy(request.SellerId);
             if (seller is null) return OperationResult.NotFound();
 
             var inventory = new Inventory(request.ProductId, request.Count, request.Price);

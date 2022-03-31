@@ -17,7 +17,7 @@ namespace Application.SellerAgg.Edit
 
         public async Task<OperationResult> Handle(EditSellerCommand request, CancellationToken cancellationToken)
         {
-            var seller = await _sellerRepository.GetEntityAsyncBy(request.SellerId);
+            var seller = await _sellerRepository.GetAsTrackingAsyncBy(request.SellerId);
             if (seller is null) return OperationResult.NotFound();
 
             seller.Edit(request.ShopName, request.NationalCode, _sellerDomainService);

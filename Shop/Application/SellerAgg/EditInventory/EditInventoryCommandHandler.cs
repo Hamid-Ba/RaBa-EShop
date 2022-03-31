@@ -11,7 +11,7 @@ namespace Application.SellerAgg.EditInventory
 
         public async Task<OperationResult> Handle(EditInventoryCommand request, CancellationToken cancellationToken)
         {
-            var seller = await _sellerRepository.GetEntityAsyncBy(request.SellerId);
+            var seller = await _sellerRepository.GetAsTrackingAsyncBy(request.SellerId);
             if (seller is null) return OperationResult.NotFound();
 
             seller.EditInventory(request.InventoryId, request.ProductId, request.Count, request.Price);

@@ -11,7 +11,7 @@ namespace Application.SellerAgg.ChangeStatus
 
         public async Task<OperationResult> Handle(ChangeSellerStatusCommand request, CancellationToken cancellationToken)
         {
-            var seller = await _sellerRepository.GetEntityAsyncBy(request.SellerId);
+            var seller = await _sellerRepository.GetAsTrackingAsyncBy(request.SellerId);
             if (seller is null) return OperationResult.NotFound();
 
             seller.ChangeStatus(request.SellerStatus, request.Description);
