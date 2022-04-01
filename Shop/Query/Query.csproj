@@ -48,6 +48,8 @@
     <None Remove="UserAgg\GetById\" />
     <None Remove="UserAgg\GetByPhoneNumber\" />
     <None Remove="UserAgg\GetAll\" />
+    <None Remove="UserAgg\UserAddress\" />
+    <None Remove="UserAgg\UserAddress\GetAll\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -90,6 +92,8 @@
     <Folder Include="UserAgg\GetById\" />
     <Folder Include="UserAgg\GetByPhoneNumber\" />
     <Folder Include="UserAgg\GetAll\" />
+    <Folder Include="UserAgg\UserAddresses\" />
+    <Folder Include="UserAgg\UserAddresses\GetAll\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.EfCore\Infrastructure.csproj" />

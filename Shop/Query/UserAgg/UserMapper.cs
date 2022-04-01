@@ -63,5 +63,21 @@ namespace Query.UserAgg
 
 			return userRoles;
         }
+
+		public static UserAddressDto MapAddress(this UserAddress address) => new UserAddressDto
+		{
+			Id = address.Id,
+			UserId = address.UserId,
+			Province = address.Province,
+			City = address.City,
+			Address = address.Address,
+			PostalCode = address.PostalCode,
+			PhoneNumber = address.PhoneNumber,
+			NationalCode = address.NationalCode,
+			FullName = address.FullName,
+			IsActive = address.IsActive,
+			CreationDate = address.CreationDate
+		};
+        
 	}
 }
