@@ -28,6 +28,7 @@
 	  <None Remove="Presentation\Api\MiddleWatres\" />
 	  <None Remove="Newtonsoft.Json" />
 	  <None Remove="Microsoft.Extensions.Hosting" />
+	  <None Remove="Presentation\Tools\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Infrastructure\" />
@@ -37,5 +38,6 @@
 	  <Folder Include="Presentation\Api\" />
 	  <Folder Include="Presentation\Api\Middlewares\" />
 	  <Folder Include="Presentation\Api\MiddleWatres\" />
+	  <Folder Include="Presentation\Tools\" />
 	</ItemGroup>
 </Project>

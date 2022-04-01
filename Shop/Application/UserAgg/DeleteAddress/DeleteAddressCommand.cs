@@ -2,5 +2,11 @@
 
 namespace Application.UserAgg.DeleteAddress
 {
-    public record DeleteAddressCommand(long UserId, long AddressId) : IBaseCommand;
+    public class DeleteAddressCommand : IBaseCommand
+    {
+        public long UserId { get; set; }
+        public long AddressId { get;private set; }
+
+        public DeleteAddressCommand(long addressId) => AddressId = addressId;
+    }
 }
