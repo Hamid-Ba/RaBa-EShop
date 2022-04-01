@@ -26,7 +26,7 @@ namespace Query.UserAgg
             };
         }
 
-        public static UserFilterDto Map(this User user, ShopContext context)
+        public static UserFilterDto Map(this User user,ShopContext context)
         {
             if (user is null) return null;
 
@@ -46,9 +46,24 @@ namespace Query.UserAgg
             };
         }
 
+        public static List<UserFilterDto> MapList(this List<User> users,ShopContext context) => users.Select(u => new UserFilterDto
+        {
+            Id = u.Id,
+            FirstName = u.FirstName,
+            LastName = u.LastName,
+            Email = u.Email,
+            PhoneNumber = u.PhoneNumber,
+            Gender = u.Gender,
+            Avatar = u.Avatar,
+            CreationDate = u.CreationDate,
+            Roles = MapRoles(u.Roles, context),
+            IsDelete = u.IsDelete,
+            DeleteDate = u.DeleteDate
+        }).ToList();
+
         private static List<UserRoleDto> MapRoles(List<UserRole> roles, ShopContext context)
         {
-            if (roles is null) return null;
+            if (roles.Count == 0) return new();
 
             var rolesList = context.Roles.Select(r => new UserRoleDto { RoleId = r.Id, RoleTitle = r.Title }).ToList();
 

@@ -27,6 +27,10 @@ namespace Query.UserAgg.GetAll
             var result = new UserFilterResult(await users.Skip(skip).Take(@params.Take).Select(u => u.Map(_context)).ToListAsync(),
                 @params);
 
+            //var list = await users.Skip(skip).Take(@params.Take).ToListAsync();
+
+            //var result = new UserFilterResult(list.MapList(_context), @params);
+
             result.GeneratePaging(users, @params.Take, @params.PageId);
 
             return result;
