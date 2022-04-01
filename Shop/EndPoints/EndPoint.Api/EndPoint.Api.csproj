@@ -23,5 +23,11 @@
   <ItemGroup>
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+    <None Remove="Infrastructures\" />
+    <None Remove="Infrastructures\ApiTools\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructures\" />
+    <Folder Include="Infrastructures\ApiTools\" />
   </ItemGroup>
 </Project>

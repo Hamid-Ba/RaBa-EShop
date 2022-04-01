@@ -1,6 +1,8 @@
 ﻿using Configuration;
+using EndPoint.Api.Infrastructures.ApiTools;
 using Framework.Application;
 using Framework.Application.SecurityUtil.Hashing;
+using Framework.Presentation.Api.JwtTools;
 using Framework.Presentation.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.Confiure(builder.Configuration.GetConnectionString("Default"));
 FrameworkBootstrapper.Init(builder.Services);
 builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
+builder.Services.AddTransient<IJwtHelper, JwtHelper>();
+builder.Services.AddJwtAuthentication(builder.Configuration);
 
 var app = builder.Build();
 
@@ -27,6 +31,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseApiCustomExceptionHandler();
 

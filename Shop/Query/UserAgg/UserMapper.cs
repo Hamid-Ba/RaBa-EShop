@@ -22,7 +22,8 @@ namespace Query.UserAgg
                 CreationDate = user.CreationDate,
                 Roles = MapRoles(user.Roles, context),
                 IsDelete = user.IsDelete,
-                DeleteDate = user.DeleteDate
+                DeleteDate = user.DeleteDate,
+                Password = user.Password
             };
         }
 

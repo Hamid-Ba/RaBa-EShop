@@ -16,6 +16,7 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -25,10 +26,11 @@
 	  <None Remove="Query\Filter\" />
 	  <None Remove="Presentation\" />
 	  <None Remove="Presentation\Api\" />
-	  <None Remove="Presentation\Api\MiddleWatres\" />
 	  <None Remove="Newtonsoft.Json" />
 	  <None Remove="Microsoft.Extensions.Hosting" />
 	  <None Remove="Presentation\Tools\" />
+	  <None Remove="Presentation\Api\JwtTools\" />
+	  <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Infrastructure\" />
@@ -37,7 +39,7 @@
 	  <Folder Include="Presentation\" />
 	  <Folder Include="Presentation\Api\" />
 	  <Folder Include="Presentation\Api\Middlewares\" />
-	  <Folder Include="Presentation\Api\MiddleWatres\" />
 	  <Folder Include="Presentation\Tools\" />
+	  <Folder Include="Presentation\Api\JwtTools\" />
 	</ItemGroup>
 </Project>
