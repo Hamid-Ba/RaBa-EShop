@@ -50,6 +50,7 @@
     <None Remove="UserAgg\GetAll\" />
     <None Remove="UserAgg\UserAddress\" />
     <None Remove="UserAgg\UserAddress\GetAll\" />
+    <None Remove="UserAgg\UserAddresses\GetBy\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -94,6 +95,7 @@
     <Folder Include="UserAgg\GetAll\" />
     <Folder Include="UserAgg\UserAddresses\" />
     <Folder Include="UserAgg\UserAddresses\GetAll\" />
+    <Folder Include="UserAgg\UserAddresses\GetBy\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.EfCore\Infrastructure.csproj" />

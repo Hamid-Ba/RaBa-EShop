@@ -5,6 +5,7 @@ using Framework.Application;
 using MediatR;
 using Query.UserAgg.DTOs;
 using Query.UserAgg.UserAddresses.GetAll;
+using Query.UserAgg.UserAddresses.GetBy;
 
 namespace Presentation.Facade.UserAgg.UserAddress
 {
@@ -21,6 +22,8 @@ namespace Presentation.Facade.UserAgg.UserAddress
         public async Task<OperationResult> Edit(EditAddressCommand command) => await _mediator.Send(command);
 
         public async Task<List<UserAddressDto>> GetAllBy(long userId) => await _mediator.Send(new GetAllUserAddressQuery(userId));
+
+        public async Task<UserAddressDto> GetBy(long UserId, long Id) => await _mediator.Send(new GetUserAddressByIdQuery(Id, UserId));
         
     }
 }

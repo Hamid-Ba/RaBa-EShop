@@ -16,6 +16,7 @@ namespace Presentation.Facade.UserAgg.UserAddress
 
         #region Query
         Task<List<UserAddressDto>> GetAllBy(long userId);
+        Task<UserAddressDto> GetBy(long UserId, long Id);
         #endregion
     }
 }
