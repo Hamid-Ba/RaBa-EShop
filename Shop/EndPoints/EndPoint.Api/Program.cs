@@ -2,14 +2,32 @@
 using EndPoint.Api.Infrastructures.ApiTools;
 using Framework.Application;
 using Framework.Application.SecurityUtil.Hashing;
+using Framework.Presentation.Api;
 using Framework.Presentation.Api.JwtTools;
 using Framework.Presentation.Api.Middlewares;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().
+    ConfigureApiBehaviorOptions(options =>
+    {
+        options.InvalidModelStateResponseFactory = context =>
+        {
+            var result = new ApiResult()
+            {
+                IsSuccess = false,
+                MetaData = new()
+                {
+                    Status = ApiStatusCode.BadRequest,
+                    Message = Tools.HandleBadRequestErrors(context)
+                }
+            };
+            return new BadRequestObjectResult(result);
+        };
+    });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

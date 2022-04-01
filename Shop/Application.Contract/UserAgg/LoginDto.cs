@@ -5,12 +5,12 @@ namespace Application.Contract.UserAgg
 {
     public class LoginDto
 	{
-        [Required(ErrorMessage = ValidationMessages.Required)]
-        [MaxLength(11 , ErrorMessage = ValidationMessages.MaxLength)]
-        [MinLength(11 , ErrorMessage = ValidationMessages.MinLength)]
+        [Required(ErrorMessage = "شماره همراه خود را وارد نمایید")]
+        [MaxLength(11 , ErrorMessage = ValidationMessages.PhoneLenght)]
+        [MinLength(11 , ErrorMessage = ValidationMessages.PhoneLenght)]
         public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = ValidationMessages.Required)]
+        [Required(ErrorMessage = "رمزعبور خود را وارد نمایید")]
         public string Password { get; set; }
 
         public LoginDto(string phoneNumber, string password)
