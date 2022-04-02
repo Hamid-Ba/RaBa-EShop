@@ -1,5 +1,6 @@
 ﻿using Application.UserAgg.ActiveAddress;
 using Application.UserAgg.AddAddress;
+using Application.UserAgg.DeActiveAddress;
 using Application.UserAgg.DeleteAddress;
 using Application.UserAgg.EditAddress;
 using Framework.Application;
@@ -17,6 +18,8 @@ namespace Presentation.Facade.UserAgg.UserAddress
         public UserAddressFacade(IMediator mediator) => _mediator = mediator;
 
         public async Task<OperationResult> Active(ActiveAddressCommand command) => await _mediator.Send(command);
+
+        public async Task<OperationResult> DeActive(DeActiveAddressCommand command) => await _mediator.Send(command);
 
         public async Task<OperationResult> Add(AddAddressCommand command) => await _mediator.Send(command);
 

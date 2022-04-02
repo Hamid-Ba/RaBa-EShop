@@ -1,5 +1,6 @@
 ﻿using Application.UserAgg.ActiveAddress;
 using Application.UserAgg.AddAddress;
+using Application.UserAgg.DeActiveAddress;
 using Application.UserAgg.DeleteAddress;
 using Application.UserAgg.EditAddress;
 using Framework.Application;
@@ -14,6 +15,7 @@ namespace Presentation.Facade.UserAgg.UserAddress
         Task<OperationResult> Edit(EditAddressCommand command);
         Task<OperationResult> Delete(DeleteAddressCommand command);
         Task<OperationResult> Active(ActiveAddressCommand command);
+        Task<OperationResult> DeActive(DeActiveAddressCommand command);
         #endregion
 
         #region Query
