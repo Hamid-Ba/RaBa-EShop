@@ -97,6 +97,9 @@ namespace Domain.UserAgg
 
             if (address is null) throw new InvalidDomainDataException("همچین آدرسی وجود ندارد");
 
+            if (Addresses.Any(a => a.IsActive))
+                Addresses.Where(a => a.IsActive).FirstOrDefault()?.DeActive();
+
             address.Active();
         }
 

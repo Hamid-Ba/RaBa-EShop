@@ -1,4 +1,6 @@
+using Application.UserAgg.ActiveAddress;
 using Application.UserAgg.AddAddress;
+using Application.UserAgg.DeActiveAddress;
 using Application.UserAgg.DeleteAddress;
 using Application.UserAgg.EditAddress;
 using Framework.Presentation.Api;
@@ -36,6 +38,21 @@ namespace EndPoint.Api.Controllers
             command.UserId = User.GetUserId();
             return CommandResult(await _userAddressFacade.Edit(command));
         }
+
+        [HttpPut("active")]
+        public async Task<ApiResult> ActiveAddress(ActiveAddressCommand command)
+        {
+            command.UserId = User.GetUserId();
+            return CommandResult(await _userAddressFacade.Active(command));
+        }
+
+        [HttpPut("deActive")]
+        public async Task<ApiResult> DeActiveAddress(DeActiveAddressCommand command)
+        {
+            command.UserId = User.GetUserId();
+            return CommandResult(await _userAddressFacade.DeActive(command));
+        }
+
         [HttpDelete]
         public async Task<ApiResult> DeleteAddress(DeleteAddressCommand command)
         {
