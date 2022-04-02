@@ -3,12 +3,14 @@ using Application.UserAgg.DeleteAddress;
 using Application.UserAgg.EditAddress;
 using Framework.Presentation.Api;
 using Framework.Presentation.Tools;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Facade.UserAgg.UserAddress;
 using Query.UserAgg.DTOs;
 
 namespace EndPoint.Api.Controllers
 {
+    [Authorize]
     public class UserAddressController : BaseApiController
     {
         private readonly IUserAddressFacade _userAddressFacade;

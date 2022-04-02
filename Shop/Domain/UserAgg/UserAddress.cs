@@ -45,6 +45,10 @@ namespace Domain.UserAgg
             IsActive = false;
         }
 
+        public void Active() => IsActive = true;
+
+        public void DeActive() => IsActive = false;
+
         private void Guard(string fullName, string phoneNumber, string province, string city, string address,
             string postalCode, string nationalCode)
         {

@@ -91,6 +91,24 @@ namespace Domain.UserAgg
             Addresses.Remove(address);
         }
 
+        public void ActiveAddress(long addressId)
+        {
+            var address = Addresses.FirstOrDefault(a => a.Id == addressId);
+
+            if (address is null) throw new InvalidDomainDataException("همچین آدرسی وجود ندارد");
+
+            address.Active();
+        }
+
+        public void DeActiveAddress(long addressId)
+        {
+            var address = Addresses.FirstOrDefault(a => a.Id == addressId);
+
+            if (address is null) throw new InvalidDomainDataException("همچین آدرسی وجود ندارد");
+
+            address.DeActive();
+        }
+
         #endregion
 
         #region Roles

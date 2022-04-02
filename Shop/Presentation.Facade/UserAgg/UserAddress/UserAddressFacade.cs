@@ -1,4 +1,5 @@
-﻿using Application.UserAgg.AddAddress;
+﻿using Application.UserAgg.ActiveAddress;
+using Application.UserAgg.AddAddress;
 using Application.UserAgg.DeleteAddress;
 using Application.UserAgg.EditAddress;
 using Framework.Application;
@@ -14,6 +15,8 @@ namespace Presentation.Facade.UserAgg.UserAddress
         private readonly IMediator _mediator;
 
         public UserAddressFacade(IMediator mediator) => _mediator = mediator;
+
+        public async Task<OperationResult> Active(ActiveAddressCommand command) => await _mediator.Send(command);
 
         public async Task<OperationResult> Add(AddAddressCommand command) => await _mediator.Send(command);
 
