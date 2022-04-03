@@ -1,4 +1,5 @@
-﻿using Application.UserAgg.ChangePassword;
+﻿using Application.UserAgg.Active;
+using Application.UserAgg.ChangePassword;
 using Application.UserAgg.ChargeWallet;
 using Application.UserAgg.Create;
 using Application.UserAgg.Edit;
@@ -12,6 +13,7 @@ namespace Presentation.Facade.UserAgg
 	{
         #region Command
         Task<OperationResult> Edit(EditUserCommand command);
+        Task<OperationResult> Active(ActiveUserCommand command);
         Task<OperationResult> Create(CreateUserCommand command);
         Task<OperationResult> Register(RegisterUserCommand command);
         Task<OperationResult> ChargeWallet(ChargeWalletCommand command);

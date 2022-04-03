@@ -18,6 +18,7 @@
     <None Remove="UserAgg\ChargeWallet\" />
     <None Remove="UserAgg\ActiveAddress\" />
     <None Remove="UserAgg\DeActiveAddress\" />
+    <None Remove="UserAgg\Active\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserAgg\AddAddress\" />
@@ -26,5 +27,6 @@
     <Folder Include="UserAgg\ChargeWallet\" />
     <Folder Include="UserAgg\ActiveAddress\" />
     <Folder Include="UserAgg\DeActiveAddress\" />
+    <Folder Include="UserAgg\Active\" />
   </ItemGroup>
 </Project>

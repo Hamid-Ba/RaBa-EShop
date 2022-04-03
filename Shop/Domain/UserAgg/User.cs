@@ -12,6 +12,7 @@ namespace Domain.UserAgg
         public string Email { get; private set; }
         public string PhoneNumber { get; private set; }
         public string Password { get; private set; }
+        public bool IsActive { get; private set; }
         public string Avatar { get; private set; }
         public Gender Gender { get; private set; }
 
@@ -33,6 +34,7 @@ namespace Domain.UserAgg
             Password = password;
             Avatar = avatar;
             Gender = gender;
+            IsActive = true;
             Roles = new List<UserRole>();
             Addresses = new List<UserAddress>();
         }
@@ -46,8 +48,6 @@ namespace Domain.UserAgg
             LastName = lastName;
             Email = email;
             PhoneNumber = phoneNumber;
-
-
 
             if (!string.IsNullOrWhiteSpace(avatar))
                 Avatar = avatar;
@@ -63,6 +63,9 @@ namespace Domain.UserAgg
                 Password = newPassword;
         }
 
+        public void Active() => IsActive = true;
+
+        public void DeActive() => IsActive = false;
 
         #region Address
 

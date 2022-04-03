@@ -1,3 +1,4 @@
+using Application.UserAgg.Active;
 using Application.UserAgg.ChangePassword;
 using Application.UserAgg.ChargeWallet;
 using Application.UserAgg.Create;
@@ -41,5 +42,8 @@ namespace EndPoint.Api.Controllers
 
         [HttpPut("changePassword")]
         public async Task<ApiResult> ChangePassword(ChangePasswordCommand command) => CommandResult(await _userFacade.ChangePassword(command));
+
+        [HttpPut("active")]
+        public async Task<ApiResult> Active(ActiveUserCommand command) => CommandResult(await _userFacade.Active(command));
     }
 }
