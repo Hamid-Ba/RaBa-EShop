@@ -1,4 +1,5 @@
 ﻿using Application.UserAgg.Active;
+using Application.UserAgg.AddToken;
 using Application.UserAgg.ChangePassword;
 using Application.UserAgg.ChargeWallet;
 using Application.UserAgg.Create;
@@ -21,6 +22,8 @@ namespace Presentation.Facade.UserAgg
         public UserFacade(IMediator mediator) => _mediator = mediator;
 
         public async Task<OperationResult> Active(ActiveUserCommand command) => await _mediator.Send(command);
+
+        public async Task<OperationResult> AddToken(AddTokenCommand command) => await _mediator.Send(command);
 
         public async Task<OperationResult> ChangePassword(ChangePasswordCommand command) => await _mediator.Send(command);
 

@@ -1,4 +1,5 @@
 ﻿using Application.UserAgg.Active;
+using Application.UserAgg.AddToken;
 using Application.UserAgg.ChangePassword;
 using Application.UserAgg.ChargeWallet;
 using Application.UserAgg.Create;
@@ -16,6 +17,7 @@ namespace Presentation.Facade.UserAgg
         Task<OperationResult> Edit(EditUserCommand command);
         Task<OperationResult> Active(ActiveUserCommand command);
         Task<OperationResult> Create(CreateUserCommand command);
+        Task<OperationResult> AddToken(AddTokenCommand command);
         Task<OperationResult> DeActive(DeActiveUserCommand command);
         Task<OperationResult> Register(RegisterUserCommand command);
         Task<OperationResult> ChargeWallet(ChargeWalletCommand command);

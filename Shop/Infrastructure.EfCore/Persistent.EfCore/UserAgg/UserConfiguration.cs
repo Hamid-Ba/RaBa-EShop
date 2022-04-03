@@ -30,6 +30,16 @@ namespace Infrastructure.Persistent.EfCore.UserAgg
                config.Property(p => p.RefId).HasMaxLength(11);
            });
 
+            builder.OwnsMany(o => o.Tokens, config =>
+           {
+               config.ToTable("Tokens", "user");
+               config.HasKey(k => k.Id);
+
+               config.Property(p => p.HashToken).HasMaxLength(250).IsRequired();
+               config.Property(p => p.HashRefreshToken).HasMaxLength(250).IsRequired();
+               config.Property(p => p.Device).HasMaxLength(100).IsRequired();
+           });
+
             builder.OwnsMany(o => o.Addresses, config =>
            {
                config.ToTable("Addresses", "user");

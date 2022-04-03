@@ -20,6 +20,7 @@
     <None Remove="UserAgg\DeActiveAddress\" />
     <None Remove="UserAgg\Active\" />
     <None Remove="UserAgg\DeActive\" />
+    <None Remove="UserAgg\AddToken\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserAgg\AddAddress\" />
@@ -30,5 +31,6 @@
     <Folder Include="UserAgg\DeActiveAddress\" />
     <Folder Include="UserAgg\Active\" />
     <Folder Include="UserAgg\DeActive\" />
+    <Folder Include="UserAgg\AddToken\" />
   </ItemGroup>
 </Project>

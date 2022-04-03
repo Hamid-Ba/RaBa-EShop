@@ -19,6 +19,7 @@ namespace Domain.UserAgg
         public List<UserRole> Roles { get; private set; }
         public List<UserWallet> Wallets { get; private set; }
         public List<UserAddress> Addresses { get; private set; }
+        public List<UserToken> Tokens { get; set; }
 
         private User() { }
 
@@ -37,6 +38,7 @@ namespace Domain.UserAgg
             IsActive = true;
             Roles = new List<UserRole>();
             Addresses = new List<UserAddress>();
+            Tokens = new List<UserToken>();
         }
 
         public void Edit(string firstName, string lastName, string email, string phoneNumber, string avatar,
@@ -139,6 +141,27 @@ namespace Domain.UserAgg
 
             wallet.UserId = Id;
             Wallets.Add(wallet);
+        }
+
+        #endregion
+
+        #region Token
+
+        public void AddToken(UserToken token)
+        {
+            var validTokenCount = Tokens.Count(t => t.RefreshTokenExpireDate > DateTime.Now);
+            if (validTokenCount ==  3) throw new InvalidDomainDataException("امکان استفاده از 4 دستگاه همزمان وجود ندارد");
+
+            token.UserId = Id;
+            Tokens.Add(token);
+        }
+
+        public void RemoveToken(long tokenId)
+        {
+            var token = Tokens.FirstOrDefault(t => t.Id == tokenId);
+            if(token is null) throw new InvalidDomainDataException("Invalid TokenId");
+
+            Tokens.Remove(token);
         }
 
         #endregion
