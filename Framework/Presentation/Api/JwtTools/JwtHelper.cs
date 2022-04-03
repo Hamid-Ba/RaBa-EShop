@@ -26,7 +26,7 @@ namespace Framework.Presentation.Api.JwtTools
                    new Claim(ClaimTypes.Name, command.FullName),
                    new Claim(ClaimTypes.MobilePhone, command.PhoneNumber)
                 }),
-                Expires = DateTime.UtcNow.AddHours(6),
+                Expires = DateTime.UtcNow.AddDays(6),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Issuer = _configuration["JwtConfig:Issuer"],
                 Audience = _configuration["JwtConfig:Audience"],

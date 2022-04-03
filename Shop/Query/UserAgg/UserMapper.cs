@@ -23,7 +23,8 @@ namespace Query.UserAgg
                 Roles = MapRoles(user.Roles, context),
                 IsDelete = user.IsDelete,
                 DeleteDate = user.DeleteDate,
-                Password = user.Password
+                Password = user.Password,
+                IsActive = user.IsActive
             };
         }
 
@@ -43,7 +44,8 @@ namespace Query.UserAgg
                 CreationDate = user.CreationDate,
                 Roles = MapRoles(user.Roles, context),
                 IsDelete = user.IsDelete,
-                DeleteDate = user.DeleteDate
+                DeleteDate = user.DeleteDate,
+                IsActive = user.IsActive
             };
         }
 
@@ -59,7 +61,8 @@ namespace Query.UserAgg
             CreationDate = u.CreationDate,
             Roles = MapRoles(u.Roles, context),
             IsDelete = u.IsDelete,
-            DeleteDate = u.DeleteDate
+            DeleteDate = u.DeleteDate,
+            IsActive = u.IsActive
         }).ToList();
 
         private static List<UserRoleDto> MapRoles(List<UserRole> roles, ShopContext context)
