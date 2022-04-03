@@ -2,6 +2,7 @@ using Application.UserAgg.Active;
 using Application.UserAgg.ChangePassword;
 using Application.UserAgg.ChargeWallet;
 using Application.UserAgg.Create;
+using Application.UserAgg.DeActive;
 using Application.UserAgg.Edit;
 using Application.UserAgg.Register;
 using Framework.Presentation.Api;
@@ -45,5 +46,8 @@ namespace EndPoint.Api.Controllers
 
         [HttpPut("active")]
         public async Task<ApiResult> Active(ActiveUserCommand command) => CommandResult(await _userFacade.Active(command));
+
+        [HttpPut("deActive")]
+        public async Task<ApiResult> DeActive(DeActiveUserCommand command) => CommandResult(await _userFacade.DeActive(command));
     }
 }

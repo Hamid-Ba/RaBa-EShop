@@ -2,6 +2,7 @@
 using Application.UserAgg.ChangePassword;
 using Application.UserAgg.ChargeWallet;
 using Application.UserAgg.Create;
+using Application.UserAgg.DeActive;
 using Application.UserAgg.Edit;
 using Application.UserAgg.Register;
 using Framework.Application;
@@ -15,6 +16,7 @@ namespace Presentation.Facade.UserAgg
         Task<OperationResult> Edit(EditUserCommand command);
         Task<OperationResult> Active(ActiveUserCommand command);
         Task<OperationResult> Create(CreateUserCommand command);
+        Task<OperationResult> DeActive(DeActiveUserCommand command);
         Task<OperationResult> Register(RegisterUserCommand command);
         Task<OperationResult> ChargeWallet(ChargeWalletCommand command);
         Task<OperationResult> ChangePassword(ChangePasswordCommand command);

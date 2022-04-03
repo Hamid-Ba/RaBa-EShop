@@ -19,6 +19,7 @@
     <None Remove="UserAgg\ActiveAddress\" />
     <None Remove="UserAgg\DeActiveAddress\" />
     <None Remove="UserAgg\Active\" />
+    <None Remove="UserAgg\DeActive\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserAgg\AddAddress\" />
@@ -28,5 +29,6 @@
     <Folder Include="UserAgg\ActiveAddress\" />
     <Folder Include="UserAgg\DeActiveAddress\" />
     <Folder Include="UserAgg\Active\" />
+    <Folder Include="UserAgg\DeActive\" />
   </ItemGroup>
 </Project>

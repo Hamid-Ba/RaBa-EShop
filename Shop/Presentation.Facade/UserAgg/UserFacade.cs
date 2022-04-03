@@ -2,6 +2,7 @@
 using Application.UserAgg.ChangePassword;
 using Application.UserAgg.ChargeWallet;
 using Application.UserAgg.Create;
+using Application.UserAgg.DeActive;
 using Application.UserAgg.Edit;
 using Application.UserAgg.Register;
 using Framework.Application;
@@ -26,6 +27,8 @@ namespace Presentation.Facade.UserAgg
         public async Task<OperationResult> ChargeWallet(ChargeWalletCommand command) => await _mediator.Send(command);
 
         public async Task<OperationResult> Create(CreateUserCommand command) => await _mediator.Send(command);
+
+        public async Task<OperationResult> DeActive(DeActiveUserCommand command) => await _mediator.Send(command);
 
         public async Task<OperationResult> Edit(EditUserCommand command) => await _mediator.Send(command);
 
