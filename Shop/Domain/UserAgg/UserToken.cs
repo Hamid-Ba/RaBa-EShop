@@ -12,6 +12,8 @@ namespace Domain.UserAgg
         public DateTime RefreshTokenExpireDate { get; private set; }
         public string Device { get; private set; }
 
+        private UserToken() { }
+
         public UserToken(string hashToken, string hashRefreshToken, DateTime tokenExpireDate, DateTime refreshTokenExpireDate, string device)
         {
             Guard(hashToken, hashRefreshToken, tokenExpireDate, refreshTokenExpireDate, device);
@@ -32,6 +34,9 @@ namespace Domain.UserAgg
 
             HashToken = newHashToken;
             HashRefreshToken = newHashRefreshToken;
+
+            TokenExpireDate = newTokenExpireDate;
+            RefreshTokenExpireDate = newRefreshTokenExpireDate;
         }
 
         private void Guard(string hashToken, string hashRefreshToken, DateTime tokenExpireDate, DateTime refreshTokenExpireDate, string device)

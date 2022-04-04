@@ -3,5 +3,5 @@ using Query.UserAgg.DTOs;
 
 namespace Query.UserAgg.UserTokens.GetByRefreshToken
 {
-    public record GetUserTokenByRefreshTokenQuery(long UserId,string HashRefreshToken) : IBaseQuery<UserTokenDto>;
+    public record GetUserTokenByRefreshTokenQuery(string HashRefreshToken) : IBaseQuery<UserTokenDto>;
 }

@@ -21,13 +21,8 @@ namespace Presentation.Facade.UserAgg
     public class UserFacade : IUserFacade
 	{
         private readonly IMediator _mediator;
-        private readonly IPasswordHasher _passwordHasher;
 
-        public UserFacade(IMediator mediator, IPasswordHasher passwordHasher)
-        {
-            _mediator = mediator;
-            _passwordHasher = passwordHasher;
-        }
+        public UserFacade(IMediator mediator) => _mediator = mediator;
 
         public async Task<OperationResult> Active(ActiveUserCommand command) => await _mediator.Send(command);
 
@@ -49,10 +44,10 @@ namespace Presentation.Facade.UserAgg
 
         public async Task<UserDto> GetBy(string phoneNumber) => await _mediator.Send(new GetUserByPhoneNumberQuery(phoneNumber));
 
-        public async Task<UserTokenDto> GetTokenBy(long userId, string refreshToken)
+        public async Task<UserTokenDto> GetTokenBy(string refreshToken)
         {
-            var hashRefreshToken = _passwordHasher.Hash(refreshToken);
-            return await _mediator.Send(new GetUserTokenByRefreshTokenQuery(userId, hashRefreshToken));
+            var hashRefreshToken = Sha256Hasher.Hash(refreshToken);
+            return await _mediator.Send(new GetUserTokenByRefreshTokenQuery(hashRefreshToken));
         }
 
         public async Task<OperationResult> Register(RegisterUserCommand command) => await _mediator.Send(command);

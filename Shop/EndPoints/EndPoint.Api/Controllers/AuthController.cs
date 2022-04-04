@@ -1,6 +1,7 @@
 using Application.Contract.UserAgg;
 using Application.UserAgg.AddToken;
 using Application.UserAgg.Register;
+using Application.UserAgg.UpdateToken;
 using Framework.Application;
 using Framework.Application.SecurityUtil.Hashing;
 using Framework.Presentation.Api;
@@ -42,12 +43,39 @@ namespace EndPoint.Api.Controllers
             if (user.IsActive == false)
                 return CommandResult(OperationResult.Error("حساب کاربری شما غیرفعال است"));
 
-            var result = await GetToken(user);
+            var result = await GetToken(user,true);
 
             return result;
         }
 
-        private async Task<ApiResult> GetToken(UserDto user)
+        [HttpPut("RefreshToken/{refreshToken}")]
+        public async Task<ApiResult> RefreshToken(string refreshToken)
+        {
+            var token = await _userFacade.GetTokenBy(refreshToken);
+            if (token is null) return CommandResult(OperationResult.NotFound("Token Couldn't Be Found"));
+
+           // if (token.TokenExpireDate > DateTime.Now) return CommandResult(OperationResult.Error("توکن هنوز منقضی نشده است"));
+           // if (token.RefreshTokenExpireDate < DateTime.Now) return CommandResult(OperationResult.Error("زمان رفرش توکن به پایان رسیده است"));
+
+            var user = await _userFacade.GetBy(token.UserId);
+
+            var newToken = await GetToken(user,false);
+
+            var newHashToken = Sha256Hasher.Hash(newToken.Data.Token);
+            var newHashRefreshToken = Sha256Hasher.Hash(newToken.Data.RefreshToken);
+
+            var updateTokenCommand = new UpdateTokenCommand(token.Id, newHashToken, newHashRefreshToken, DateTime.Now.AddDays(6), DateTime.Now.AddDays(7));
+            updateTokenCommand.UserId = user.Id;
+
+            var result = await _userFacade.UpdateToken(updateTokenCommand);
+
+            if (result.Status == OperationResultStatus.Success)
+                return newToken;
+
+            return CommandResult(OperationResult.Error());
+        }
+
+        private async Task<ApiResult<LoginResultDto>> GetToken(UserDto user,bool wantToAddToken)
         {
             var uaParser = Parser.GetDefault();
             var info = uaParser.Parse(HttpContext.Request.Headers["user-agent"]);
@@ -58,32 +86,47 @@ namespace EndPoint.Api.Controllers
             var token = _jwtHelper.SignIn(jwtDto);
             var refreshToken = Guid.NewGuid().ToString();
 
-            var hashToken = _passwordHasher.Hash(token);
-            var hashRefreshToken = _passwordHasher.Hash(refreshToken);
+            var hashToken = Sha256Hasher.Hash(token);
+            var hashRefreshToken = Sha256Hasher.Hash(refreshToken);
 
-            var tokenCommand = new AddTokenCommand(user.Id, hashToken, hashRefreshToken, DateTime.Now.AddDays(6), DateTime.Now.AddDays(7), device);
+            if (wantToAddToken)
+            {
+                var tokenCommand = new AddTokenCommand(user.Id, hashToken, hashRefreshToken, DateTime.Now.AddDays(6), DateTime.Now.AddDays(7), device);
 
-            var result = await _userFacade.AddToken(tokenCommand);
+                var result = await _userFacade.AddToken(tokenCommand);
 
-            if (result.Status == OperationResultStatus.Success)
-                return new ApiResult<LoginResultDto>()
+                if (result.Status == OperationResultStatus.Success)
+                    return new ApiResult<LoginResultDto>()
+                    {
+                        Data = new(token, refreshToken),
+                        IsSuccess = true,
+                        MetaData = new()
+                        {
+                            Message = "ورود با موفقیت انجام شد",
+                            Status = ApiStatusCode.Success
+                        }
+                    };
+
+                return new ApiResult<LoginResultDto>
                 {
-                    Data = new(token,refreshToken),
-                    IsSuccess = true,
+                    Data = new LoginResultDto("", ""),
+                    IsSuccess = false,
                     MetaData = new()
                     {
-                        Message = "ورود با موفقیت انجام شد",
-                        Status = ApiStatusCode.Success
+                        Status = ApiStatusCode.BadRequest,
+                        Message = "شما نمی توانید وارد شوید"
                     }
                 };
+            }
 
-            return new ApiResult
+            return new ApiResult<LoginResultDto>()
             {
-                IsSuccess = false,
+                Data = new(token, refreshToken),
+                IsSuccess = true,
                 MetaData = new()
                 {
-                    Status = ApiStatusCode.BadRequest,
-                    Message = "شما نمی توانید وارد شوید"
+                    Message = "ورود با موفقیت انجام شد",
+                    Status = ApiStatusCode.Success
                 }
             };
         }
