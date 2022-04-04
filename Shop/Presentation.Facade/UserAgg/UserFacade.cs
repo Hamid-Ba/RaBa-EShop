@@ -6,6 +6,7 @@ using Application.UserAgg.Create;
 using Application.UserAgg.DeActive;
 using Application.UserAgg.Edit;
 using Application.UserAgg.Register;
+using Application.UserAgg.UpdateToken;
 using Framework.Application;
 using MediatR;
 using Query.UserAgg.DTOs;
@@ -42,6 +43,7 @@ namespace Presentation.Facade.UserAgg
         public async Task<UserDto> GetBy(string phoneNumber) => await _mediator.Send(new GetUserByPhoneNumberQuery(phoneNumber));
 
         public async Task<OperationResult> Register(RegisterUserCommand command) => await _mediator.Send(command);
-        
+
+        public async Task<OperationResult> UpdateToken(UpdateTokenCommand command) => await _mediator.Send(command);
     }
 }

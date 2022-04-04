@@ -6,6 +6,7 @@ using Application.UserAgg.Create;
 using Application.UserAgg.DeActive;
 using Application.UserAgg.Edit;
 using Application.UserAgg.Register;
+using Application.UserAgg.UpdateToken;
 using Framework.Application;
 using Query.UserAgg.DTOs;
 
@@ -20,6 +21,7 @@ namespace Presentation.Facade.UserAgg
         Task<OperationResult> AddToken(AddTokenCommand command);
         Task<OperationResult> DeActive(DeActiveUserCommand command);
         Task<OperationResult> Register(RegisterUserCommand command);
+        Task<OperationResult> UpdateToken(UpdateTokenCommand command);
         Task<OperationResult> ChargeWallet(ChargeWalletCommand command);
         Task<OperationResult> ChangePassword(ChangePasswordCommand command);
         #endregion

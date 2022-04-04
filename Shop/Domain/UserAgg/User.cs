@@ -156,6 +156,15 @@ namespace Domain.UserAgg
             Tokens.Add(token);
         }
 
+        public void UpdateToken(long tokenId, string newHashToken, string newHashRefreshToken,
+            DateTime newTokenExpireDate, DateTime newRefreshTokenExpireDate)
+        {
+            var token = Tokens.FirstOrDefault(t => t.Id == tokenId);
+            if (token is null) throw new InvalidDomainDataException("There Is No Token With This Id");
+
+            token.UpdateToken(newHashToken, newHashRefreshToken, newTokenExpireDate, newRefreshTokenExpireDate);
+        }
+
         public void RemoveToken(long tokenId)
         {
             var token = Tokens.FirstOrDefault(t => t.Id == tokenId);

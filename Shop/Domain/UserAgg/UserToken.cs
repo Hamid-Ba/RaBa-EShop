@@ -22,6 +22,18 @@ namespace Domain.UserAgg
             Device = device;
         }
 
+        public void UpdateToken(string newHashToken,string newHashRefreshToken, DateTime newTokenExpireDate, DateTime newRefreshTokenExpireDate)
+        {
+            if (TokenExpireDate >= DateTime.Now)
+                throw new InvalidDataException("Token Is Still Valid");
+
+            if(RefreshTokenExpireDate < DateTime.Now)
+                throw new InvalidDataException("Refresh Token Is Not Valid Anymore");
+
+            HashToken = newHashToken;
+            HashRefreshToken = newHashRefreshToken;
+        }
+
         private void Guard(string hashToken, string hashRefreshToken, DateTime tokenExpireDate, DateTime refreshTokenExpireDate, string device)
         {
             NullOrEmptyDomainDataException.CheckString(hashToken, nameof(hashToken));
