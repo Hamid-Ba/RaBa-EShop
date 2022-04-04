@@ -102,5 +102,16 @@ namespace Query.UserAgg
                 CreationDate = address.CreationDate
             };
         }
+
+        public static UserTokenDto? MapToken(this UserToken token) => new UserTokenDto
+        {
+            Id = token.Id,
+            UserId = token.UserId,
+            HashToken = token.HashToken,
+            HashRefreshToken = token.HashRefreshToken,
+            TokenExpireDate = token.TokenExpireDate,
+            RefreshTokenExpireDate = token.RefreshTokenExpireDate,
+            Device = token.Device
+        };
     }
 }

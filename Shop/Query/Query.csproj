@@ -51,6 +51,8 @@
     <None Remove="UserAgg\UserAddress\" />
     <None Remove="UserAgg\UserAddress\GetAll\" />
     <None Remove="UserAgg\UserAddresses\GetBy\" />
+    <None Remove="UserAgg\UserTokens\" />
+    <None Remove="UserAgg\UserTokens\GetBy\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -96,6 +98,8 @@
     <Folder Include="UserAgg\UserAddresses\" />
     <Folder Include="UserAgg\UserAddresses\GetAll\" />
     <Folder Include="UserAgg\UserAddresses\GetBy\" />
+    <Folder Include="UserAgg\UserTokens\" />
+    <Folder Include="UserAgg\UserTokens\GetByRefreshToken\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.EfCore\Infrastructure.csproj" />

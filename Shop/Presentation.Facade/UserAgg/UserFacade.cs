@@ -8,19 +8,26 @@ using Application.UserAgg.Edit;
 using Application.UserAgg.Register;
 using Application.UserAgg.UpdateToken;
 using Framework.Application;
+using Framework.Application.SecurityUtil.Hashing;
 using MediatR;
 using Query.UserAgg.DTOs;
 using Query.UserAgg.GetAll;
 using Query.UserAgg.GetById;
 using Query.UserAgg.GetByPhoneNumber;
+using Query.UserAgg.UserTokens.GetByRefreshToken;
 
 namespace Presentation.Facade.UserAgg
 {
     public class UserFacade : IUserFacade
 	{
         private readonly IMediator _mediator;
+        private readonly IPasswordHasher _passwordHasher;
 
-        public UserFacade(IMediator mediator) => _mediator = mediator;
+        public UserFacade(IMediator mediator, IPasswordHasher passwordHasher)
+        {
+            _mediator = mediator;
+            _passwordHasher = passwordHasher;
+        }
 
         public async Task<OperationResult> Active(ActiveUserCommand command) => await _mediator.Send(command);
 
@@ -41,6 +48,12 @@ namespace Presentation.Facade.UserAgg
         public async Task<UserDto> GetBy(long id) => await _mediator.Send(new GetUserByIdQuery(id));
 
         public async Task<UserDto> GetBy(string phoneNumber) => await _mediator.Send(new GetUserByPhoneNumberQuery(phoneNumber));
+
+        public async Task<UserTokenDto> GetTokenBy(long userId, string refreshToken)
+        {
+            var hashRefreshToken = _passwordHasher.Hash(refreshToken);
+            return await _mediator.Send(new GetUserTokenByRefreshTokenQuery(userId, hashRefreshToken));
+        }
 
         public async Task<OperationResult> Register(RegisterUserCommand command) => await _mediator.Send(command);
 

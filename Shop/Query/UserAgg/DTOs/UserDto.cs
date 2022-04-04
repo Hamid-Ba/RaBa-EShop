@@ -39,6 +39,16 @@ namespace Query.UserAgg.DTOs
         public bool IsActive { get; set; }
     }
 
+    public class UserTokenDto : BaseDto
+    {
+        public long UserId { get; set; }
+        public string HashToken { get; set; }
+        public string HashRefreshToken { get; set; }
+        public DateTime TokenExpireDate { get; set; }
+        public DateTime RefreshTokenExpireDate { get; set; }
+        public string Device { get; set; }
+    }
+
     public class UserWalletDto : BaseDto
     {
         public long UserId { get; set; }
