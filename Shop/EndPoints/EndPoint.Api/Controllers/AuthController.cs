@@ -66,9 +66,9 @@ namespace EndPoint.Api.Controllers
             var result = await _userFacade.AddToken(tokenCommand);
 
             if (result.Status == OperationResultStatus.Success)
-                return new ApiResult<string>()
+                return new ApiResult<LoginResultDto>()
                 {
-                    Data = token,
+                    Data = new(token,refreshToken),
                     IsSuccess = true,
                     MetaData = new()
                     {
