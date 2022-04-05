@@ -6,6 +6,7 @@ using Application.UserAgg.Create;
 using Application.UserAgg.DeActive;
 using Application.UserAgg.Edit;
 using Application.UserAgg.Register;
+using Application.UserAgg.RemoveToken;
 using Application.UserAgg.UpdateToken;
 using Framework.Application;
 using Framework.Application.SecurityUtil.Hashing;
@@ -51,6 +52,8 @@ namespace Presentation.Facade.UserAgg
         }
 
         public async Task<OperationResult> Register(RegisterUserCommand command) => await _mediator.Send(command);
+
+        public async Task<OperationResult> RemoveToken(RemoveTokenCommand command) => await _mediator.Send(command);
 
         public async Task<OperationResult> UpdateToken(UpdateTokenCommand command) => await _mediator.Send(command);
     }
