@@ -36,6 +36,7 @@ builder.Services.Confiure(builder.Configuration.GetConnectionString("Default"));
 FrameworkBootstrapper.Init(builder.Services);
 builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
 builder.Services.AddTransient<IJwtHelper, JwtHelper>();
+builder.Services.AddTransient<CustomJwtValidation>();
 builder.Services.AddJwtAuthentication(builder.Configuration);
 
 var app = builder.Build();

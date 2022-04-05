@@ -7,8 +7,8 @@ using Framework.Application;
 using Framework.Application.SecurityUtil.Hashing;
 using Framework.Presentation.Api;
 using Framework.Presentation.Api.JwtTools;
-using Framework.Presentation.Tools;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Facade.UserAgg;
 using Query.UserAgg.DTOs;
@@ -78,6 +78,7 @@ namespace EndPoint.Api.Controllers
             return CommandResult(OperationResult.Error());
         }
 
+        [Authorize]
         [HttpDelete]
         public async Task<ApiResult> Logout()
         {
