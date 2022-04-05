@@ -53,6 +53,7 @@
     <None Remove="UserAgg\UserAddresses\GetBy\" />
     <None Remove="UserAgg\UserTokens\" />
     <None Remove="UserAgg\UserTokens\GetBy\" />
+    <None Remove="UserAgg\UserTokens\GetByJwtToken\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -100,6 +101,7 @@
     <Folder Include="UserAgg\UserAddresses\GetBy\" />
     <Folder Include="UserAgg\UserTokens\" />
     <Folder Include="UserAgg\UserTokens\GetByRefreshToken\" />
+    <Folder Include="UserAgg\UserTokens\GetByJwtToken\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.EfCore\Infrastructure.csproj" />

@@ -15,6 +15,7 @@ using Query.UserAgg.DTOs;
 using Query.UserAgg.GetAll;
 using Query.UserAgg.GetById;
 using Query.UserAgg.GetByPhoneNumber;
+using Query.UserAgg.UserTokens.GetByJwtToken;
 using Query.UserAgg.UserTokens.GetByRefreshToken;
 
 namespace Presentation.Facade.UserAgg
@@ -45,7 +46,13 @@ namespace Presentation.Facade.UserAgg
 
         public async Task<UserDto> GetBy(string phoneNumber) => await _mediator.Send(new GetUserByPhoneNumberQuery(phoneNumber));
 
-        public async Task<UserTokenDto> GetTokenBy(string refreshToken)
+        public async Task<UserTokenDto> GetUserTokenByHashToken(string token)
+        {
+            var hashToken = Sha256Hasher.Hash(token);
+            return await _mediator.Send(new GetUserTokenByJwtTokenQuery(hashToken));
+        }
+
+        public async Task<UserTokenDto> GetUserTokenByRefreshToken(string refreshToken)
         {
             var hashRefreshToken = Sha256Hasher.Hash(refreshToken);
             return await _mediator.Send(new GetUserTokenByRefreshTokenQuery(hashRefreshToken));

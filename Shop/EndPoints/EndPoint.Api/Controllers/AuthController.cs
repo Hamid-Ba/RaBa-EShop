@@ -1,11 +1,14 @@
 using Application.Contract.UserAgg;
 using Application.UserAgg.AddToken;
 using Application.UserAgg.Register;
+using Application.UserAgg.RemoveToken;
 using Application.UserAgg.UpdateToken;
 using Framework.Application;
 using Framework.Application.SecurityUtil.Hashing;
 using Framework.Presentation.Api;
 using Framework.Presentation.Api.JwtTools;
+using Framework.Presentation.Tools;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Facade.UserAgg;
 using Query.UserAgg.DTOs;
@@ -51,7 +54,7 @@ namespace EndPoint.Api.Controllers
         [HttpPut("RefreshToken/{refreshToken}")]
         public async Task<ApiResult> RefreshToken(string refreshToken)
         {
-            var token = await _userFacade.GetTokenBy(refreshToken);
+            var token = await _userFacade.GetUserTokenByRefreshToken(refreshToken);
             if (token is null) return CommandResult(OperationResult.NotFound("Token Couldn't Be Found"));
 
            // if (token.TokenExpireDate > DateTime.Now) return CommandResult(OperationResult.Error("توکن هنوز منقضی نشده است"));
@@ -73,6 +76,18 @@ namespace EndPoint.Api.Controllers
                 return newToken;
 
             return CommandResult(OperationResult.Error());
+        }
+
+        [HttpDelete]
+        public async Task<ApiResult> Logout()
+        {
+            var token = await HttpContext.GetTokenAsync("access_token");
+
+            var userToken = await _userFacade.GetUserTokenByHashToken(token);
+            if (userToken is null) return CommandResult(OperationResult.NotFound("Token Couldn't Be Found"));
+
+            var removeTokenCommand = new RemoveTokenCommand(userToken.UserId, userToken.Id);
+            return CommandResult(await _userFacade.RemoveToken(removeTokenCommand));
         }
 
         private async Task<ApiResult<LoginResultDto>> GetToken(UserDto user,bool wantToAddToken)

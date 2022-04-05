@@ -32,7 +32,8 @@ namespace Presentation.Facade.UserAgg
         Task<UserDto> GetBy(long id);
         Task<UserDto> GetBy(string phoneNumber);
         Task<UserFilterResult> GetAll(UserFilterParam filter);
-        Task<UserTokenDto> GetTokenBy(string refreshToken);
+        Task<UserTokenDto> GetUserTokenByHashToken(string token);
+        Task<UserTokenDto> GetUserTokenByRefreshToken(string refreshToken);
         #endregion
     }
 }
