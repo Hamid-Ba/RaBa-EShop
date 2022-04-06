@@ -1,5 +1,7 @@
 using Application.RoleAgg.Create;
 using Application.RoleAgg.Edit;
+using Domain.RoleAgg.Enums;
+using EndPoint.Api.Infrastructures.Securities;
 using Framework.Presentation.Api;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Facade.RoleAgg;
@@ -7,6 +9,7 @@ using Query.RoleAgg.DTOs;
 
 namespace EndPoint.Api.Controllers
 {
+    [PermissionChecker(Permission.Role_Management)]
     public class RoleController : BaseApiController
     {
         private readonly IRoleFacade _roleFacade;

@@ -5,6 +5,8 @@ using Application.UserAgg.Create;
 using Application.UserAgg.DeActive;
 using Application.UserAgg.Edit;
 using Application.UserAgg.Register;
+using Domain.RoleAgg.Enums;
+using EndPoint.Api.Infrastructures.Securities;
 using Framework.Presentation.Api;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Facade.UserAgg;
@@ -12,6 +14,7 @@ using Query.UserAgg.DTOs;
 
 namespace EndPoint.Api.Controllers
 {
+    [PermissionChecker(Permission.User_Management)]
     public class UserController : BaseApiController
     {
         private readonly IUserFacade _userFacade;

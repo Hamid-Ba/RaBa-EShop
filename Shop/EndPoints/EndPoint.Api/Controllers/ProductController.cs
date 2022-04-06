@@ -3,13 +3,17 @@ using Application.ProductAgg.Create;
 using Application.ProductAgg.DeleteImage;
 using Application.ProductAgg.Edit;
 using Application.ProductAgg.EditImage;
+using Domain.RoleAgg.Enums;
+using EndPoint.Api.Infrastructures.Securities;
 using Framework.Presentation.Api;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Facade.ProductAgg;
 using Query.ProductAgg.DTOs;
 
 namespace EndPoint.Api.Controllers
 {
+    [PermissionChecker(Permission.CRUD_Product)]
     public class ProductController : BaseApiController
     {
         private readonly IProductFacade _productFacade;
@@ -17,12 +21,14 @@ namespace EndPoint.Api.Controllers
         public ProductController(IProductFacade productFacade) => _productFacade = productFacade;
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ApiResult<ProductFilterResult>> GetAll([FromQuery] ProductFilterParam param) => QueryResult(await _productFacade.GetAll(param));
 
         [HttpGet("{id}")]
         public async Task<ApiResult<ProductDto>> GetBy(long id) => QueryResult(await _productFacade.GetBy(id));
 
         [HttpGet("{slug}")]
+        [AllowAnonymous]
         public async Task<ApiResult<ProductDto>> GetBy(string slug) => QueryResult(await _productFacade.GetBy(slug));
 
         [HttpPost]
