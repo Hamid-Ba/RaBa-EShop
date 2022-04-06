@@ -27,9 +27,11 @@
     <None Remove="Infrastructures\" />
     <None Remove="Infrastructures\ApiTools\" />
     <None Remove="UAParser" />
+    <None Remove="Infrastructures\Securities\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infrastructures\" />
     <Folder Include="Infrastructures\ApiTools\" />
+    <Folder Include="Infrastructures\Securities\" />
   </ItemGroup>
 </Project>
