@@ -46,6 +46,24 @@ namespace Query.SellerAgg
 			};
 		}
 
+		public static InventoryDto MapInventory(this Inventory inventory, ShopContext context)
+        {
+			if (inventory is null) return null;
+
+			var product = context.Products.FirstOrDefault(p => p.Id == inventory.ProductId);
+			return new InventoryDto
+			{
+				Id = inventory.Id,
+				SellerId = inventory.SellerId,
+				ProductId = inventory.ProductId,
+				ProductTitle = product.Title,
+				ProductImage = product.ImageName,
+				Price = inventory.Price,
+				Count = inventory.Count,
+				CreationDate = inventory.CreationDate
+			};
+        }
+
 		public static List<InventoryDto>? MapInventories(this Seller seller)
         {
 			if (seller.Inventories is null) return null;

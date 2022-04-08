@@ -1,12 +1,11 @@
-﻿using System;
-using Application.SellerAgg.AddInventory;
+﻿using Application.SellerAgg.AddInventory;
 using Application.SellerAgg.EditInventory;
 using Framework.Application;
 using Query.SellerAgg.DTOs;
 
 namespace Presentation.Facade.SellerAgg.Inventories
 {
-	public interface IInventoryFacade
+    public interface IInventoryFacade
 	{
         #region Command
         Task<OperationResult> AddInventory(AddInventoryCommand command);
@@ -14,8 +13,8 @@ namespace Presentation.Facade.SellerAgg.Inventories
         #endregion
 
         #region Query
+        Task<InventoryDto> GetBy(long id, long sellerId);
         Task<List<InventoryDto>> GetAllBy(long sellerId);
         #endregion
     }
 }
-

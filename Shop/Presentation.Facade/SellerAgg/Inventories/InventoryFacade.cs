@@ -3,6 +3,7 @@ using Application.SellerAgg.EditInventory;
 using Framework.Application;
 using MediatR;
 using Query.SellerAgg.DTOs;
+using Query.SellerAgg.Inventories.Get;
 using Query.SellerAgg.Inventories.GetAll;
 
 namespace Presentation.Facade.SellerAgg.Inventories
@@ -18,5 +19,8 @@ namespace Presentation.Facade.SellerAgg.Inventories
         public async Task<OperationResult> EditInventory(EditInventoryCommand command) => await _mediator.Send(command);
 
         public async Task<List<InventoryDto>> GetAllBy(long sellerId) => await _mediator.Send(new GetInventoriesBySellerIdQuery(sellerId));
+
+        public async Task<InventoryDto> GetBy(long id, long sellerId) => await _mediator.Send(new GetInventoryByIdQuery(id, sellerId));
+        
     }
 }
