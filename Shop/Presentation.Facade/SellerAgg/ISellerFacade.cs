@@ -20,6 +20,7 @@ namespace Presentation.Facade.SellerAgg
 
         #region Query
         Task<SellerDto> GetBy(long id);
+        Task<SellerDto> GetByCurrentUser(long userId);
         Task<SellerFilterResult> GetAll(SellerFilterParam filter);
         #endregion
     }

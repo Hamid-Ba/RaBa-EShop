@@ -8,6 +8,7 @@ using MediatR;
 using Query.SellerAgg.DTOs;
 using Query.SellerAgg.Get;
 using Query.SellerAgg.GetAll;
+using Query.SellerAgg.GetBy;
 
 namespace Presentation.Facade.SellerAgg
 {
@@ -30,6 +31,8 @@ namespace Presentation.Facade.SellerAgg
         public async Task<SellerFilterResult> GetAll(SellerFilterParam filter) => await _mediator.Send(new GetAllSellerQuery(filter));
 
         public async Task<SellerDto> GetBy(long id) => await _mediator.Send(new GetSellerByIdQuery(id));
+
+        public async Task<SellerDto> GetByCurrentUser(long userId) => await _mediator.Send(new GetSellerByUserIdQuery(userId));
         
     }
 }
