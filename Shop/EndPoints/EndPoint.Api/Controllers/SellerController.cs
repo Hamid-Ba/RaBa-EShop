@@ -6,6 +6,8 @@ using Application.SellerAgg.EditInventory;
 using Domain.RoleAgg.Enums;
 using EndPoint.Api.Infrastructures.Securities;
 using Framework.Presentation.Api;
+using Framework.Presentation.Tools;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Facade.SellerAgg;
 using Presentation.Facade.SellerAgg.Inventories;
@@ -30,6 +32,26 @@ namespace EndPoint.Api.Controllers
 
         [HttpGet("{id}")]
         public async Task<ApiResult<SellerDto>> GetBy(long id) => QueryResult(await _sellerFacade.GetBy(id));
+
+        [Authorize]
+        [HttpGet("getByCurrentUser")]
+        public async Task<ApiResult<SellerDto>> GetByCurrentUser() => QueryResult(await _sellerFacade.GetByCurrentUser(User.GetUserId()));
+
+        [HttpGet("getAllInventories")]
+        public async Task<ApiResult<List<InventoryDto>>> GetAllInventories() => QueryResult(await _inventoryFacade.GetAllBy(User.GetUserId()));
+
+        [HttpGet("getInventory/{inventoryId}")]
+        public async Task<ApiResult<InventoryDto>> GetInventory(long inventoryId)
+        {
+            var seller = await _sellerFacade.GetByCurrentUser(User.GetUserId());
+
+            var result = await _inventoryFacade.GetBy(inventoryId);
+
+            if (result is null || result.SellerId != seller.Id)
+                return QueryResult(new InventoryDto());
+
+            return QueryResult(result);
+        }
 
         [HttpPost]
         [PermissionChecker(Permission.Seller_Management)]

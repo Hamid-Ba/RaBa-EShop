@@ -13,7 +13,7 @@ namespace Presentation.Facade.SellerAgg.Inventories
         #endregion
 
         #region Query
-        Task<InventoryDto> GetBy(long id, long sellerId);
+        Task<InventoryDto> GetBy(long id);
         Task<List<InventoryDto>> GetAllBy(long sellerId);
         #endregion
     }

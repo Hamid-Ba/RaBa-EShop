@@ -18,9 +18,9 @@ namespace Presentation.Facade.SellerAgg.Inventories
 
         public async Task<OperationResult> EditInventory(EditInventoryCommand command) => await _mediator.Send(command);
 
-        public async Task<List<InventoryDto>> GetAllBy(long sellerId) => await _mediator.Send(new GetInventoriesBySellerIdQuery(sellerId));
+        public async Task<InventoryDto> GetBy(long id) => await _mediator.Send(new GetInventoryByIdQuery(id));
 
-        public async Task<InventoryDto> GetBy(long id, long sellerId) => await _mediator.Send(new GetInventoryByIdQuery(id, sellerId));
+        public async Task<List<InventoryDto>> GetAllBy(long sellerId) => await _mediator.Send(new GetInventoriesBySellerIdQuery(sellerId));
         
     }
 }

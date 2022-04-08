@@ -13,7 +13,7 @@ namespace Query.SellerAgg.Inventories.Get
 
         public async Task<InventoryDto> Handle(GetInventoryByIdQuery request, CancellationToken cancellationToken)
         {
-            var seller = await _context.Sellers.FirstOrDefaultAsync(s => s.Id == request.SellerId);
+            var seller = await _context.Sellers.FirstOrDefaultAsync(s => s.Inventories.Any(i => i.Id == request.Id));
             if (seller is null) return new InventoryDto();
 
             var result = seller.Inventories.FirstOrDefault(i => i.Id == request.Id)?.MapInventory(_context);
