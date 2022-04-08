@@ -1,8 +1,6 @@
-﻿using Application.SellerAgg.AddInventory;
-using Application.SellerAgg.ChangeStatus;
+﻿using Application.SellerAgg.ChangeStatus;
 using Application.SellerAgg.Create;
 using Application.SellerAgg.Edit;
-using Application.SellerAgg.EditInventory;
 using Framework.Application;
 using MediatR;
 using Query.SellerAgg.DTOs;
@@ -18,15 +16,11 @@ namespace Presentation.Facade.SellerAgg
 
         public SellerFacade(IMediator mediator) => _mediator = mediator;
 
-        public async Task<OperationResult> AddInventory(AddInventoryCommand command) => await _mediator.Send(command);
-
         public async Task<OperationResult> ChangeStatus(ChangeSellerStatusCommand command) => await _mediator.Send(command);
 
         public async Task<OperationResult> Create(CreateSellerCommand command) => await _mediator.Send(command);
 
         public async Task<OperationResult> Edit(EditSellerCommand command) => await _mediator.Send(command);
-
-        public async Task<OperationResult> EditInventory(EditInventoryCommand command) => await _mediator.Send(command);
 
         public async Task<SellerFilterResult> GetAll(SellerFilterParam filter) => await _mediator.Send(new GetAllSellerQuery(filter));
 

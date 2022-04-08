@@ -1,5 +1,6 @@
 ﻿using Domain.SellerAgg;
 using Infrastructure.Persistent.EfCore;
+using Microsoft.EntityFrameworkCore;
 using Query.SellerAgg.DTOs;
 
 namespace Query.SellerAgg
@@ -58,6 +59,32 @@ namespace Query.SellerAgg
 				Count = i.Count,
 				CreationDate = i.CreationDate
 			}).ToList();
+        }
+
+		public static List<InventoryDto>?  MapInventories(this List<Inventory> inventories,ShopContext context)
+        {
+			if (inventories is null) return null;
+
+			List<InventoryDto>? result = new();
+
+            foreach (var inventory in inventories)
+            {
+				var product = context.Products.FirstOrDefault(p => p.Id == inventory.ProductId);
+
+				result.Add(new InventoryDto
+				{
+					Id = inventory.Id,
+					SellerId = inventory.SellerId,
+					ProductId = inventory.ProductId,
+					ProductTitle = product.Title,
+					ProductImage = product.ImageName,
+					Price = inventory.Price,
+					Count = inventory.Count,
+					CreationDate = inventory.CreationDate
+				});
+            }
+
+			return result;
         }
 	}
 }

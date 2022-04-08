@@ -20,6 +20,9 @@ namespace Query.SellerAgg.DTOs
     {
         public long SellerId { get; set; }
         public long ProductId { get; set; }
+        public string SellerShopName { get; set; }
+        public string ProductTitle { get; set; }
+        public string ProductImage { get; set; }
         public int Count { get; set; }
         public double Price { get; set; }
     }

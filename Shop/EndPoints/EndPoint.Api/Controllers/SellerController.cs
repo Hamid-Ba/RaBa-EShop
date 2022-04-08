@@ -8,6 +8,7 @@ using EndPoint.Api.Infrastructures.Securities;
 using Framework.Presentation.Api;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Facade.SellerAgg;
+using Presentation.Facade.SellerAgg.Inventories;
 using Query.SellerAgg.DTOs;
 
 namespace EndPoint.Api.Controllers
@@ -15,8 +16,13 @@ namespace EndPoint.Api.Controllers
     public class SellerController : BaseApiController
     {
         private readonly ISellerFacade _sellerFacade;
+        private readonly IInventoryFacade _inventoryFacade;
 
-        public SellerController(ISellerFacade sellerFacade) => _sellerFacade = sellerFacade;
+        public SellerController(ISellerFacade sellerFacade, IInventoryFacade inventoryFacade)
+        {
+            _sellerFacade = sellerFacade;
+            _inventoryFacade = inventoryFacade;
+        }
 
         [HttpGet]
         [PermissionChecker(Permission.Seller_Management)]
@@ -31,7 +37,7 @@ namespace EndPoint.Api.Controllers
 
         [HttpPost("addInventory")]
         [PermissionChecker(Permission.Add_Inventory)]
-        public async Task<ApiResult> AddInventory(AddInventoryCommand command) => CommandResult(await _sellerFacade.AddInventory(command));
+        public async Task<ApiResult> AddInventory(AddInventoryCommand command) => CommandResult(await _inventoryFacade.AddInventory(command));
 
         [HttpPut]
         [PermissionChecker(Permission.Seller_Management)]
@@ -39,7 +45,7 @@ namespace EndPoint.Api.Controllers
 
         [HttpPut("editInventory")]
         [PermissionChecker(Permission.Edit_Inventory)]
-        public async Task<ApiResult> EditInventory(EditInventoryCommand command) => CommandResult(await _sellerFacade.EditInventory(command));
+        public async Task<ApiResult> EditInventory(EditInventoryCommand command) => CommandResult(await _inventoryFacade.EditInventory(command));
 
         [HttpPut("changeStatus")]
         [PermissionChecker(Permission.Seller_Management)]

@@ -1,8 +1,6 @@
-﻿using Application.SellerAgg.AddInventory;
-using Application.SellerAgg.ChangeStatus;
+﻿using Application.SellerAgg.ChangeStatus;
 using Application.SellerAgg.Create;
 using Application.SellerAgg.Edit;
-using Application.SellerAgg.EditInventory;
 using Framework.Application;
 using Query.SellerAgg.DTOs;
 
@@ -13,8 +11,6 @@ namespace Presentation.Facade.SellerAgg
         #region Command
         Task<OperationResult> Edit(EditSellerCommand command);
         Task<OperationResult> Create(CreateSellerCommand command);
-        Task<OperationResult> AddInventory(AddInventoryCommand command);
-        Task<OperationResult> EditInventory(EditInventoryCommand command);
         Task<OperationResult> ChangeStatus(ChangeSellerStatusCommand command);
         #endregion
 

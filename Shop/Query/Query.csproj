@@ -55,6 +55,8 @@
     <None Remove="UserAgg\UserTokens\GetBy\" />
     <None Remove="UserAgg\UserTokens\GetByJwtToken\" />
     <None Remove="SellerAgg\GetBy\" />
+    <None Remove="SellerAgg\Inventories\" />
+    <None Remove="SellerAgg\Inventories\GetAll\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -104,6 +106,8 @@
     <Folder Include="UserAgg\UserTokens\GetByRefreshToken\" />
     <Folder Include="UserAgg\UserTokens\GetByJwtToken\" />
     <Folder Include="SellerAgg\GetBy\" />
+    <Folder Include="SellerAgg\Inventories\" />
+    <Folder Include="SellerAgg\Inventories\GetAll\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.EfCore\Infrastructure.csproj" />

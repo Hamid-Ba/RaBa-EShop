@@ -5,6 +5,7 @@ using Presentation.Facade.OrderAgg;
 using Presentation.Facade.ProductAgg;
 using Presentation.Facade.RoleAgg;
 using Presentation.Facade.SellerAgg;
+using Presentation.Facade.SellerAgg.Inventories;
 using Presentation.Facade.SiteEntities.Banners;
 using Presentation.Facade.SiteEntities.Sliders;
 using Presentation.Facade.UserAgg;
@@ -22,6 +23,7 @@ namespace Presentation.Facade
 			service.AddScoped<IProductFacade, ProductFacade>();
 			service.AddScoped<IRoleFacade, RoleFacade>();
 			service.AddScoped<ISellerFacade, SellerFacade>();
+			service.AddScoped<IInventoryFacade, InventoryFacade>();
 			service.AddScoped<IBannerFacade, BannerFacade>();
 			service.AddScoped<ISliderFacade, SliderFacade>();
 			service.AddScoped<IUserFacade, UserFacade>();

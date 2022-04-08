@@ -22,6 +22,7 @@
     <None Remove="SiteEntities\Sliders\" />
     <None Remove="UserAgg\" />
     <None Remove="UserAgg\UserAddress\" />
+    <None Remove="SellerAgg\Inventories\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -35,5 +36,6 @@
     <Folder Include="SiteEntities\Sliders\" />
     <Folder Include="UserAgg\" />
     <Folder Include="UserAgg\UserAddress\" />
+    <Folder Include="SellerAgg\Inventories\" />
   </ItemGroup>
 </Project>
