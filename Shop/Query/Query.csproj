@@ -58,6 +58,7 @@
     <None Remove="SellerAgg\Inventories\" />
     <None Remove="SellerAgg\Inventories\GetAll\" />
     <None Remove="SellerAgg\Inventories\Get\" />
+    <None Remove="ProductAgg\GetForShop\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CategoryAgg\" />
@@ -110,6 +111,7 @@
     <Folder Include="SellerAgg\Inventories\" />
     <Folder Include="SellerAgg\Inventories\GetAll\" />
     <Folder Include="SellerAgg\Inventories\Get\" />
+    <Folder Include="ProductAgg\GetForShop\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.EfCore\Infrastructure.csproj" />

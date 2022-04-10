@@ -1,4 +1,5 @@
 ﻿using Domain.ProductAgg;
+using Domain.SellerAgg;
 using Infrastructure.Persistent.EfCore;
 using Query.ProductAgg.DTOs;
 
@@ -26,7 +27,7 @@ namespace Query.ProductAgg
 
         public static ProductCategoryDto MapCategory(long categoryId, ShopContext context)
         {
-            var category =  context.Categories.FirstOrDefault(c => c.Id == categoryId);
+            var category = context.Categories.FirstOrDefault(c => c.Id == categoryId);
 
             if (category != null)
                 return new ProductCategoryDto
@@ -39,7 +40,7 @@ namespace Query.ProductAgg
             return null;
         }
 
-        public static ProductDto MapSingle(this Product product,ShopContext context)
+        public static ProductDto MapSingle(this Product product, ShopContext context)
         {
             if (product is null) return null;
 
@@ -86,6 +87,25 @@ namespace Query.ProductAgg
                 SeoImage = i.SeoImage,
                 Sequence = i.Sequence
             }).ToList();
+        }
+
+        public static List<ProductShopDto> MapProductShop(this List<Product> products, List<Inventory> inventories)
+        {
+            if (products is null) return null;
+
+            var result = products.Where(p => !p.IsDelete).Select(p => new ProductShopDto
+            {
+                Id = p.Id,
+                Title = p.Title,
+                Slug = p.Slug,
+                ImageName = p.ImageName,
+                CreationDate = p.CreationDate,
+            }).ToList();
+
+            result.ForEach(p => p.InventoryId = inventories.FirstOrDefault(i => i.ProductId == p.Id).Id);
+            result.ForEach(p => p.Price = inventories.FirstOrDefault(i => i.ProductId == p.Id).Price);
+
+            return result;
         }
     }
 }

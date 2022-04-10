@@ -49,6 +49,8 @@ namespace Query.ProductAgg.DTOs
     public class ProductCategoryDto : BaseDto
     {
         public string Title { get; set; }
+        public string Slug { get; set; }
+        public SeoData SeoData { get; set; }
     }
 
     public class ProductFilterParam : BaseFilterParam
