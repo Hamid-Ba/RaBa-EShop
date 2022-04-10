@@ -35,7 +35,11 @@ namespace Query.CommentAgg.GetAll
 
             var commentsList = await comments.Skip((@params.PageId - 1) * @params.Take).Take(@params.Take).ToListAsync();
 
-            var result = new CommentFilterResult(commentsList.Map(), @params);
+            var result = new CommentFilterResult
+            {
+                FilterParams = @params,
+                Data = commentsList.Map()
+            };
 
             result.GeneratePaging(comments, @params.Take, @params.PageId);
 

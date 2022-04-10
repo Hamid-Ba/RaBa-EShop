@@ -55,8 +55,5 @@ namespace Query.OrderAgg.DTOs
 
     public class OrderFilterResult : BaseFilter<OrderDto, OrderFilterParam>
     {
-        public OrderFilterResult(List<OrderDto> data, OrderFilterParam filterParams) : base(data, filterParams)
-        {
-        }
     }
 }

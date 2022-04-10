@@ -93,7 +93,7 @@ namespace Query.ProductAgg
         {
             if (products is null) return null;
 
-            var result = products.Where(p => !p.IsDelete).Select(p => new ProductShopDto
+            var firstFilterResult = products.Where(p => !p.IsDelete).Select(p => new ProductShopDto
             {
                 Id = p.Id,
                 Title = p.Title,
@@ -102,8 +102,10 @@ namespace Query.ProductAgg
                 CreationDate = p.CreationDate,
             }).ToList();
 
-            result.ForEach(p => p.InventoryId = inventories.FirstOrDefault(i => i.ProductId == p.Id).Id);
-            result.ForEach(p => p.Price = inventories.FirstOrDefault(i => i.ProductId == p.Id).Price);
+            firstFilterResult.ForEach(p => p.InventoryId = inventories.FirstOrDefault(i => i.ProductId == p.Id)?.Id);
+            firstFilterResult.ForEach(p => p.Price = inventories.FirstOrDefault(i => i.ProductId == p.Id)?.Price);
+
+            var result = firstFilterResult.Where(p => p.InventoryId != null).ToList();
 
             return result;
         }

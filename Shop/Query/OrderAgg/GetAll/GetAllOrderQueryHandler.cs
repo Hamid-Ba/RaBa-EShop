@@ -40,7 +40,11 @@ namespace Query.OrderAgg.GetAll
 
             var ordersList = await orders.Skip((@params.PageId - 1) * @params.Take).Take(@params.Take).ToListAsync();
 
-            var result = new OrderFilterResult(ordersList.Map(_context), @params);
+            var result = new OrderFilterResult
+            {
+                FilterParams = @params,
+                Data = ordersList.Map(_context)
+            };
 
             result.GeneratePaging(orders, @params.Take, @params.PageId);
 

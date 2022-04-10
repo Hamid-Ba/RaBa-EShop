@@ -80,8 +80,5 @@ namespace Query.UserAgg.DTOs
 
     public class UserFilterResult : BaseFilter<UserFilterDto, UserFilterParam>
     {
-        public UserFilterResult(List<UserFilterDto> data, UserFilterParam filterParams) : base(data, filterParams)
-        {
-        }
     }
 }

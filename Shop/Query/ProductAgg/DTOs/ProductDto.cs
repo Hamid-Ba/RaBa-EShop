@@ -61,8 +61,5 @@ namespace Query.ProductAgg.DTOs
 
     public class ProductFilterResult : BaseFilter<ProductsDto, ProductFilterParam>
     {
-        public ProductFilterResult(List<ProductsDto> data, ProductFilterParam filterParams) : base(data, filterParams)
-        {
-        }
     }
 }

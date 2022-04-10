@@ -20,7 +20,7 @@ namespace Query.ProductAgg.GetForShop
 
             var inventories = await _context.Sellers.Select(s => s.Inventories).ToListAsync();
             CategoryDto category = new();
-            var products = await _context.Products.Where(p => inventories.Any(i => i.Any(s => s.ProductId == p.Id))).ToListAsync();
+            var products = await _context.Products.ToListAsync();
 
             if (!string.IsNullOrWhiteSpace(@params.CategorySlug))
             {
@@ -31,7 +31,7 @@ namespace Query.ProductAgg.GetForShop
             if (!string.IsNullOrWhiteSpace(@params.Search))
                 products = products.Where(p => p.Title.Contains(@params.Search)).ToList();
 
-          
+
             //Get First Inventory That Contain Chipest Cost Of The Product
             List<Inventory> productInventories = new List<Inventory>();
 
@@ -41,7 +41,8 @@ namespace Query.ProductAgg.GetForShop
                     .Select(s => s.Inventories.Where(i => i.ProductId == product.Id).OrderByDescending(o => o.Price).FirstOrDefault())
                     .FirstOrDefaultAsync();
 
-                productInventories.Add(productInventory);
+                if (productInventory != null)
+                    productInventories.Add(productInventory);
             }
             //End Of Above Comment
 
@@ -63,9 +64,13 @@ namespace Query.ProductAgg.GetForShop
                     break;
             }
 
-            var result = new ProductShopFilterResult(productShopDto, @params);
-            result.Category = category;
-            result.GeneratePaging(products.AsQueryable(), @params.Take, @params.PageId);
+            var result = new ProductShopFilterResult()
+            {
+                Category = category,
+                FilterParams = @params,
+                Data = productShopDto
+            };
+            result.GeneratePaging(productShopDto.AsQueryable(), @params.Take, @params.PageId);
 
             return result;
         }

@@ -35,8 +35,5 @@ namespace Query.SellerAgg.DTOs
 
     public class SellerFilterResult : BaseFilter<SellerDto, SellerFilterParam>
     {
-        public SellerFilterResult(List<SellerDto> data, SellerFilterParam filterParams) : base(data, filterParams)
-        {
-        }
     }
 }

@@ -24,8 +24,11 @@ namespace Query.UserAgg.GetAll
 
             var skip = (@params.PageId - 1) * @params.Take;
 
-            var result = new UserFilterResult(await users.Skip(skip).Take(@params.Take).Select(u => u.Map(_context)).ToListAsync(),
-                @params);
+            var result = new UserFilterResult
+            {
+                FilterParams = @params,
+                Data = await users.Skip(skip).Take(@params.Take).Select(u => u.Map(_context)).ToListAsync()
+            };
 
             //var list = await users.Skip(skip).Take(@params.Take).ToListAsync();
 

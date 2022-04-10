@@ -23,8 +23,11 @@ namespace Query.ProductAgg.GetAll
             if (!string.IsNullOrWhiteSpace(@params.Slug))
                 products = products.Where(p => p.Slug == @params.Slug);
 
-            var result = new ProductFilterResult(await products.Skip((@params.PageId - 1) * @params.Take).Take(@params.Take)
-                .Select(p => p.Map(_context)).ToListAsync(), @params);
+            var result = new ProductFilterResult
+            {
+                FilterParams = @params,
+                Data = await products.Skip((@params.PageId - 1) * @params.Take).Take(@params.Take).Select(p => p.Map(_context)).ToListAsync()
+            };
 
             result.GeneratePaging(products, @params.Take, @params.PageId);
 

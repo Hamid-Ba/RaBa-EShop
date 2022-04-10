@@ -24,8 +24,5 @@ namespace Query.CommentAgg.DTOs
 
     public class CommentFilterResult : BaseFilter<CommentDto, CommentFilterParam>
     {
-        public CommentFilterResult(List<CommentDto> data, CommentFilterParam filterParams) : base(data, filterParams)
-        {
-        }
     }
 }

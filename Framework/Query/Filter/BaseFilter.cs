@@ -32,14 +32,7 @@
     where TParam : BaseFilterParam
     where TData : BaseDto
     {
-        public BaseFilter(List<TData> data, TParam filterParams)
-        {
-            Data = data;
-            FilterParams = filterParams;
-        }
-
-        private List<TData> Data { get; set; }
-        private TParam FilterParams { get; set; }
+        public List<TData> Data { get; set; }
+        public TParam FilterParams { get; set; }
     }
 }
-

@@ -24,7 +24,11 @@ namespace Query.SellerAgg.GetAll
 
             var skip = (@params.PageId - 1) * @params.Take;
 
-            var result = new SellerFilterResult(await sellers.Skip(skip).Take(@params.Take).Select(s => s.Map(_context)).ToListAsync(), @params);
+            var result = new SellerFilterResult
+            {
+                FilterParams = @params,
+                Data = await sellers.Skip(skip).Take(@params.Take).Select(s => s.Map(_context)).ToListAsync()
+            };
 
             result.GeneratePaging(sellers, @params.Take, @params.PageId);
 
