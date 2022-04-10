@@ -1,5 +1,4 @@
-﻿using System;
-using Application.ProductAgg.AddImage;
+﻿using Application.ProductAgg.AddImage;
 using Application.ProductAgg.Create;
 using Application.ProductAgg.DeleteImage;
 using Application.ProductAgg.Edit;
@@ -9,7 +8,7 @@ using Query.ProductAgg.DTOs;
 
 namespace Presentation.Facade.ProductAgg
 {
-	public interface IProductFacade
+    public interface IProductFacade
 	{
         #region Command
         Task<OperationResult> Edit(EditProductCommand command);
@@ -23,6 +22,7 @@ namespace Presentation.Facade.ProductAgg
         Task<ProductDto> GetBy(long id);
         Task<ProductDto> GetBy(string slug);
         Task<ProductFilterResult> GetAll(ProductFilterParam filter);
+        Task<ProductShopFilterResult> GetForShop(ProductShopFilterParam filter);
         #endregion
     }
 }

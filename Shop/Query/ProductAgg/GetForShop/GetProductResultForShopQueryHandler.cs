@@ -8,13 +8,13 @@ using Query.ProductAgg.DTOs;
 
 namespace Query.ProductAgg.GetForShop
 {
-    public class GetProductResultForShopQueryHandler : IBaseQueryHandler<GetProductResultForShopQuery, ProductShopResultDto>
+    public class GetProductResultForShopQueryHandler : IBaseQueryHandler<GetProductResultForShopQuery, ProductShopFilterResult>
     {
         private readonly ShopContext _context;
 
         public GetProductResultForShopQueryHandler(ShopContext context) => _context = context;
 
-        public async Task<ProductShopResultDto> Handle(GetProductResultForShopQuery request, CancellationToken cancellationToken)
+        public async Task<ProductShopFilterResult> Handle(GetProductResultForShopQuery request, CancellationToken cancellationToken)
         {
             var @params = request.FilterParams;
 
@@ -63,7 +63,7 @@ namespace Query.ProductAgg.GetForShop
                     break;
             }
 
-            var result = new ProductShopResultDto(productShopDto, @params);
+            var result = new ProductShopFilterResult(productShopDto, @params);
             result.Category = category;
             result.GeneratePaging(products.AsQueryable(), @params.Take, @params.PageId);
 

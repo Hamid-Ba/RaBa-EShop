@@ -24,6 +24,10 @@ namespace EndPoint.Api.Controllers
         [AllowAnonymous]
         public async Task<ApiResult<ProductFilterResult>> GetAll([FromQuery] ProductFilterParam param) => QueryResult(await _productFacade.GetAll(param));
 
+        [HttpGet("GetShop")]
+        [AllowAnonymous]
+        public async Task<ApiResult<ProductShopFilterResult>> GetShop([FromQuery] ProductShopFilterParam param) => QueryResult(await _productFacade.GetForShop(param));
+
         [HttpGet("{id}")]
         public async Task<ApiResult<ProductDto>> GetBy(long id) => QueryResult(await _productFacade.GetBy(id));
 

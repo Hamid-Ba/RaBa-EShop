@@ -10,6 +10,7 @@ using Query.ProductAgg.DTOs;
 using Query.ProductAgg.GetAll;
 using Query.ProductAgg.GetById;
 using Query.ProductAgg.GetBySlug;
+using Query.ProductAgg.GetForShop;
 
 namespace Presentation.Facade.ProductAgg
 {
@@ -34,6 +35,8 @@ namespace Presentation.Facade.ProductAgg
         public async Task<ProductDto> GetBy(long id) => await _mediator.Send(new GetProductByIdQuery(id));
 
         public async Task<ProductDto> GetBy(string slug) => await _mediator.Send(new GetProductBySlugQuery(slug));
+
+        public async Task<ProductShopFilterResult> GetForShop(ProductShopFilterParam filter) => await _mediator.Send(new GetProductResultForShopQuery(filter));
         
     }
 }

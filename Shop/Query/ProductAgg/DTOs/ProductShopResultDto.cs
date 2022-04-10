@@ -4,11 +4,11 @@ using Query.CategoryAgg.DTOs;
 
 namespace Query.ProductAgg.DTOs
 {
-    public class ProductShopResultDto :  BaseFilter<ProductShopDto, ProductShopFilterParam>
+    public class ProductShopFilterResult :  BaseFilter<ProductShopDto, ProductShopFilterParam>
 	{
         public CategoryDto? Category { get; set; }
 
-        public ProductShopResultDto(List<ProductShopDto> data, ProductShopFilterParam filterParams) : base(data, filterParams)
+        public ProductShopFilterResult(List<ProductShopDto> data, ProductShopFilterParam filterParams) : base(data, filterParams)
         {
         }
     }
